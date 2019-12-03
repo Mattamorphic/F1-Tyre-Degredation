@@ -1,0 +1,888 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.1" />
+<title>app.render.grapher API documentation</title>
+<meta name="description" content="A helper class to wrap around creating the plots …" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>app.render.grapher</code></h1>
+</header>
+<section id="section-intro">
+<p>A helper class to wrap around creating the plots</p>
+<h2 id="author">Author</h2>
+<p>Matthew Barber</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#39;&#39;&#39;
+    A helper class to wrap around creating the plots
+
+    Author:
+        Matthew Barber
+&#39;&#39;&#39;
+from datetime import timedelta
+
+
+class Grapher:
+    &#39;&#39;&#39;
+        A wrapper class for creating the graphs
+
+        Args:
+            plt (matplotlib.plot): The global plotter object
+    &#39;&#39;&#39;
+    def __init__(self, plt):
+        self.plt = plt
+
+    def createPlots(self, title, columns, rows):
+        &#39;&#39;&#39;
+            Create a new canvas with a configuration of plots
+
+            Args:
+                title (str): The title for the window
+                columns (int): The amount of graphs in columns
+                rows (int): The amount of graphs in rows
+        &#39;&#39;&#39;
+        fig, plts = self.plt.subplots(rows, columns, figsize=(10, 10))
+        fig.canvas.set_window_title(title)
+        fig.tight_layout(pad=5.0, w_pad=5.0, h_pad=10.0)
+        return plts
+
+    def degredation(self, track, tyres):
+        &#39;&#39;&#39;
+            Sample method to plot degredation
+
+            Args:
+                tyres               (list):     A list of tyres to map
+                laps                (int):      The amount of laps to test for
+                fuel                (int):      Starting fuel
+                fuel_consumption    (float):    The fuel consumption rate per lap
+        &#39;&#39;&#39;
+        class DegredationData:
+            &#39;&#39;&#39;
+                Degredation data helper
+            &#39;&#39;&#39;
+            def __init__(self):
+                self.grip = []
+                self.lap_times = []
+
+            def addData(self, grip, lap_time):
+                &#39;&#39;&#39;
+                    Add data to our instance variables
+
+                    Args:
+                        grip        (float): grip data
+                        lap_time    (float): lap time
+                &#39;&#39;&#39;
+                self.grip.append(grip)
+                self.lap_times.append(lap_time)
+
+        # Dictionary for degredation data
+        tyre_data = {tyre.type: DegredationData() for tyre in tyres}
+        current_fuel = track.initial_fuel
+        # Simulate a test of the tyres
+        for i in range(0, track.race_laps):
+            for tyre in tyres:
+                tyre_data[tyre.type].addData(
+                    tyre.grip,
+                    tyre.calculateLapTime(track.initial_fuel, current_fuel,
+                                          track.lap_time, 1.0))
+                tyre.addLap(track.initial_fuel, current_fuel, 1.0)
+            current_fuel -= track.fuel_consumption_per_lap
+
+        # Plot the results for each tyre
+        (grip_plt, lap_time_plt) = self.createPlots(&#34;Testing the simulation&#34;,
+                                                    2, 1)
+        grip_plt.set_title(&#39;Degredation of all three compounds grip&#39;)
+        grip_plt.set(xlabel=&#34;lap&#34;, ylabel=&#34;grip&#34;)
+        lap_time_plt.set_title(&#39;Degredation of all three compounds lap time&#39;)
+        lap_time_plt.set(xlabel=&#34;lap&#34;, ylabel=&#34;lap_time&#34;)
+        for type, data in tyre_data.items():
+            grip_plt.plot(data.grip, label=type)
+            lap_time_plt.plot(data.lap_times, label=type)
+        grip_plt.legend()
+        lap_time_plt.legend()
+
+    def graphStrategy(self, title, *cars):
+        &#39;&#39;&#39;
+            Using a car object graph a strategy
+
+            Args:
+                title   (str):      A title for the window
+                cars    (iterable): Args making up cars
+        &#39;&#39;&#39;
+        if len(cars) == 1:
+            columns, rows = (1, 1)
+        else:
+            columns, rows = (2, round(len(cars) / 2))
+        plts = self.createPlots(title, columns, rows)
+        # Convert cars into an iterable object, so we can fetch without worrying about index
+        cars = iter(cars)
+        for r in range(rows):
+            for c in range(columns):
+                try:
+                    self.singlePlotGraph(
+                        plts[c, r]
+                        if rows &gt; 1 else plts[c] if columns &gt; 1 else plts,
+                        next(cars))
+                except StopIteration:
+                    break
+
+    def compareGraphStrategy(self, title, *cars):
+        &#39;&#39;&#39;
+            Using multiple car objects, graph these on the same plot
+
+            Args:
+                title (str): The title for the plot
+                cars  (iter): An iterable of cars
+        &#39;&#39;&#39;
+        self.multiPlotGraph(self.createPlots(title, 1, 1), *cars)
+
+    def multiPlotGraph(self, plt, *cars):
+        &#39;&#39;&#39;
+            Given a plot and any number of cars, plot the strategy
+
+            Args:
+                plt (subplot):  A plot to plot the data against
+                cars (iter):    The cars to simulate
+        &#39;&#39;&#39;
+        racetimes = {}
+        pit_laps = None
+        for car in cars:
+            racetimes[car.team] = {
+                &#34;pit_laps&#34;: car.pit_laps,
+                &#34;time&#34;: car.simulateRace()
+            }
+            plt.plot(car.lap_times, color=car.colour, label=car.team)
+            if not pit_laps:
+                pit_laps = len(car.pit_laps)
+        plt.set_title(self.strategyTitle(pit_laps, racetimes))
+        plt.legend()
+
+    def singlePlotGraph(self, plt, car):
+        &#39;&#39;&#39;
+                Given a plot and a car, plot the strategy
+
+                Args:
+                    plt (subplot):  A sub plot to plot the data against
+                    car (Car):      The car to simulate
+            &#39;&#39;&#39;
+        racetime = {
+            car.team: {
+                &#34;pit_laps&#34;: car.pit_laps,
+                &#34;time&#34;: car.simulateRace()
+            }
+        }
+        plt.plot(car.lap_times, color=car.colour, label=car.team)
+        xlabel, ylabel = self.strategyAxesLabels(car)
+        plt.set_xlabel(xlabel, horizontalalignment=&#34;left&#34;, x=0)
+        plt.set_ylabel(ylabel, horizontalalignment=&#34;left&#34;, y=0)
+        plt.set_title(self.strategyTitle(len(car.pit_laps), racetime))
+        plt.legend()
+
+    def strategyTitle(self, stops, racetimes):
+        &#39;&#39;&#39;
+            Helper method to clean up the methods above
+
+            Args:
+                stops         (int):    Amount of stops
+                racetimes     (dict):    Racetimes
+
+            Returns:
+                str
+        &#39;&#39;&#39;
+
+        return (f&#34;{stops} stop Strategy\n&#34; + &#34;\n&#34;.join([
+            team.capitalize() +
+            f&#34; Race Time: {self.convertFloatToTimedelta(data[&#39;time&#39;])}&#34; +
+            f&#34; pitting on laps {&#39;,&#39;.join([str(lap) for lap in data[&#39;pit_laps&#39;]])}&#34;
+            for team, data in racetimes.items()
+        ]))
+
+    def strategyAxesLabels(self, car):
+        &#39;&#39;&#39;
+            Helper method to clean up the method above, returns a tuple of strings
+
+            Args:
+                car (Car): A car
+
+            Returns:
+                tuple(str)
+        &#39;&#39;&#39;
+        return (
+            &#34;Lap Number \n&#34; +
+            f&#34;Start: {car.initial_tyre.type.capitalize()} compound\n&#34; +
+            &#39;\n&#39;.join([
+                f&#39;Lap {car.pit_laps[i]} pit for {tyre.type.capitalize()} compound&#39;
+                for i, tyre in enumerate(car.pit_tyres)
+            ]), &#34;Lap Times&#34;)
+
+    def convertFloatToTimedelta(self, value):
+        &#39;&#39;&#39;
+            Converts a float into a timedelta
+
+            Args:
+                value (float): Float representing a duration of time in seconds
+        &#39;&#39;&#39;
+        # Seconds are just the value as an integer
+        seconds = int(value)
+        # Calulate the microseconds from the original value
+        microseconds = (value * 1000000) % 1000000
+        # Express as a timedelta (HH:MM:SS.ms)
+        return timedelta(0, seconds, microseconds)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="app.render.grapher.Grapher"><code class="flex name class">
+<span>class <span class="ident">Grapher</span></span>
+<span>(</span><span>plt)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>A wrapper class for creating the graphs</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>plt</code></strong> :&ensp;<code>matplotlib.plot</code></dt>
+<dd>The global plotter object</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Grapher:
+    &#39;&#39;&#39;
+        A wrapper class for creating the graphs
+
+        Args:
+            plt (matplotlib.plot): The global plotter object
+    &#39;&#39;&#39;
+    def __init__(self, plt):
+        self.plt = plt
+
+    def createPlots(self, title, columns, rows):
+        &#39;&#39;&#39;
+            Create a new canvas with a configuration of plots
+
+            Args:
+                title (str): The title for the window
+                columns (int): The amount of graphs in columns
+                rows (int): The amount of graphs in rows
+        &#39;&#39;&#39;
+        fig, plts = self.plt.subplots(rows, columns, figsize=(10, 10))
+        fig.canvas.set_window_title(title)
+        fig.tight_layout(pad=5.0, w_pad=5.0, h_pad=10.0)
+        return plts
+
+    def degredation(self, track, tyres):
+        &#39;&#39;&#39;
+            Sample method to plot degredation
+
+            Args:
+                tyres               (list):     A list of tyres to map
+                laps                (int):      The amount of laps to test for
+                fuel                (int):      Starting fuel
+                fuel_consumption    (float):    The fuel consumption rate per lap
+        &#39;&#39;&#39;
+        class DegredationData:
+            &#39;&#39;&#39;
+                Degredation data helper
+            &#39;&#39;&#39;
+            def __init__(self):
+                self.grip = []
+                self.lap_times = []
+
+            def addData(self, grip, lap_time):
+                &#39;&#39;&#39;
+                    Add data to our instance variables
+
+                    Args:
+                        grip        (float): grip data
+                        lap_time    (float): lap time
+                &#39;&#39;&#39;
+                self.grip.append(grip)
+                self.lap_times.append(lap_time)
+
+        # Dictionary for degredation data
+        tyre_data = {tyre.type: DegredationData() for tyre in tyres}
+        current_fuel = track.initial_fuel
+        # Simulate a test of the tyres
+        for i in range(0, track.race_laps):
+            for tyre in tyres:
+                tyre_data[tyre.type].addData(
+                    tyre.grip,
+                    tyre.calculateLapTime(track.initial_fuel, current_fuel,
+                                          track.lap_time, 1.0))
+                tyre.addLap(track.initial_fuel, current_fuel, 1.0)
+            current_fuel -= track.fuel_consumption_per_lap
+
+        # Plot the results for each tyre
+        (grip_plt, lap_time_plt) = self.createPlots(&#34;Testing the simulation&#34;,
+                                                    2, 1)
+        grip_plt.set_title(&#39;Degredation of all three compounds grip&#39;)
+        grip_plt.set(xlabel=&#34;lap&#34;, ylabel=&#34;grip&#34;)
+        lap_time_plt.set_title(&#39;Degredation of all three compounds lap time&#39;)
+        lap_time_plt.set(xlabel=&#34;lap&#34;, ylabel=&#34;lap_time&#34;)
+        for type, data in tyre_data.items():
+            grip_plt.plot(data.grip, label=type)
+            lap_time_plt.plot(data.lap_times, label=type)
+        grip_plt.legend()
+        lap_time_plt.legend()
+
+    def graphStrategy(self, title, *cars):
+        &#39;&#39;&#39;
+            Using a car object graph a strategy
+
+            Args:
+                title   (str):      A title for the window
+                cars    (iterable): Args making up cars
+        &#39;&#39;&#39;
+        if len(cars) == 1:
+            columns, rows = (1, 1)
+        else:
+            columns, rows = (2, round(len(cars) / 2))
+        plts = self.createPlots(title, columns, rows)
+        # Convert cars into an iterable object, so we can fetch without worrying about index
+        cars = iter(cars)
+        for r in range(rows):
+            for c in range(columns):
+                try:
+                    self.singlePlotGraph(
+                        plts[c, r]
+                        if rows &gt; 1 else plts[c] if columns &gt; 1 else plts,
+                        next(cars))
+                except StopIteration:
+                    break
+
+    def compareGraphStrategy(self, title, *cars):
+        &#39;&#39;&#39;
+            Using multiple car objects, graph these on the same plot
+
+            Args:
+                title (str): The title for the plot
+                cars  (iter): An iterable of cars
+        &#39;&#39;&#39;
+        self.multiPlotGraph(self.createPlots(title, 1, 1), *cars)
+
+    def multiPlotGraph(self, plt, *cars):
+        &#39;&#39;&#39;
+            Given a plot and any number of cars, plot the strategy
+
+            Args:
+                plt (subplot):  A plot to plot the data against
+                cars (iter):    The cars to simulate
+        &#39;&#39;&#39;
+        racetimes = {}
+        pit_laps = None
+        for car in cars:
+            racetimes[car.team] = {
+                &#34;pit_laps&#34;: car.pit_laps,
+                &#34;time&#34;: car.simulateRace()
+            }
+            plt.plot(car.lap_times, color=car.colour, label=car.team)
+            if not pit_laps:
+                pit_laps = len(car.pit_laps)
+        plt.set_title(self.strategyTitle(pit_laps, racetimes))
+        plt.legend()
+
+    def singlePlotGraph(self, plt, car):
+        &#39;&#39;&#39;
+                Given a plot and a car, plot the strategy
+
+                Args:
+                    plt (subplot):  A sub plot to plot the data against
+                    car (Car):      The car to simulate
+            &#39;&#39;&#39;
+        racetime = {
+            car.team: {
+                &#34;pit_laps&#34;: car.pit_laps,
+                &#34;time&#34;: car.simulateRace()
+            }
+        }
+        plt.plot(car.lap_times, color=car.colour, label=car.team)
+        xlabel, ylabel = self.strategyAxesLabels(car)
+        plt.set_xlabel(xlabel, horizontalalignment=&#34;left&#34;, x=0)
+        plt.set_ylabel(ylabel, horizontalalignment=&#34;left&#34;, y=0)
+        plt.set_title(self.strategyTitle(len(car.pit_laps), racetime))
+        plt.legend()
+
+    def strategyTitle(self, stops, racetimes):
+        &#39;&#39;&#39;
+            Helper method to clean up the methods above
+
+            Args:
+                stops         (int):    Amount of stops
+                racetimes     (dict):    Racetimes
+
+            Returns:
+                str
+        &#39;&#39;&#39;
+
+        return (f&#34;{stops} stop Strategy\n&#34; + &#34;\n&#34;.join([
+            team.capitalize() +
+            f&#34; Race Time: {self.convertFloatToTimedelta(data[&#39;time&#39;])}&#34; +
+            f&#34; pitting on laps {&#39;,&#39;.join([str(lap) for lap in data[&#39;pit_laps&#39;]])}&#34;
+            for team, data in racetimes.items()
+        ]))
+
+    def strategyAxesLabels(self, car):
+        &#39;&#39;&#39;
+            Helper method to clean up the method above, returns a tuple of strings
+
+            Args:
+                car (Car): A car
+
+            Returns:
+                tuple(str)
+        &#39;&#39;&#39;
+        return (
+            &#34;Lap Number \n&#34; +
+            f&#34;Start: {car.initial_tyre.type.capitalize()} compound\n&#34; +
+            &#39;\n&#39;.join([
+                f&#39;Lap {car.pit_laps[i]} pit for {tyre.type.capitalize()} compound&#39;
+                for i, tyre in enumerate(car.pit_tyres)
+            ]), &#34;Lap Times&#34;)
+
+    def convertFloatToTimedelta(self, value):
+        &#39;&#39;&#39;
+            Converts a float into a timedelta
+
+            Args:
+                value (float): Float representing a duration of time in seconds
+        &#39;&#39;&#39;
+        # Seconds are just the value as an integer
+        seconds = int(value)
+        # Calulate the microseconds from the original value
+        microseconds = (value * 1000000) % 1000000
+        # Express as a timedelta (HH:MM:SS.ms)
+        return timedelta(0, seconds, microseconds)</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="app.render.grapher.Grapher.compareGraphStrategy"><code class="name flex">
+<span>def <span class="ident">compareGraphStrategy</span></span>(<span>self, title, *cars)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Using multiple car objects, graph these on the same plot</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>title</code></strong> :&ensp;<code>str</code></dt>
+<dd>The title for the plot</dd>
+</dl>
+<p>cars
+(iter): An iterable of cars</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def compareGraphStrategy(self, title, *cars):
+    &#39;&#39;&#39;
+        Using multiple car objects, graph these on the same plot
+
+        Args:
+            title (str): The title for the plot
+            cars  (iter): An iterable of cars
+    &#39;&#39;&#39;
+    self.multiPlotGraph(self.createPlots(title, 1, 1), *cars)</code></pre>
+</details>
+</dd>
+<dt id="app.render.grapher.Grapher.convertFloatToTimedelta"><code class="name flex">
+<span>def <span class="ident">convertFloatToTimedelta</span></span>(<span>self, value)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Converts a float into a timedelta</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>value</code></strong> :&ensp;<code>float</code></dt>
+<dd>Float representing a duration of time in seconds</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def convertFloatToTimedelta(self, value):
+    &#39;&#39;&#39;
+        Converts a float into a timedelta
+
+        Args:
+            value (float): Float representing a duration of time in seconds
+    &#39;&#39;&#39;
+    # Seconds are just the value as an integer
+    seconds = int(value)
+    # Calulate the microseconds from the original value
+    microseconds = (value * 1000000) % 1000000
+    # Express as a timedelta (HH:MM:SS.ms)
+    return timedelta(0, seconds, microseconds)</code></pre>
+</details>
+</dd>
+<dt id="app.render.grapher.Grapher.createPlots"><code class="name flex">
+<span>def <span class="ident">createPlots</span></span>(<span>self, title, columns, rows)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Create a new canvas with a configuration of plots</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>title</code></strong> :&ensp;<code>str</code></dt>
+<dd>The title for the window</dd>
+<dt><strong><code>columns</code></strong> :&ensp;<code>int</code></dt>
+<dd>The amount of graphs in columns</dd>
+<dt><strong><code>rows</code></strong> :&ensp;<code>int</code></dt>
+<dd>The amount of graphs in rows</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def createPlots(self, title, columns, rows):
+    &#39;&#39;&#39;
+        Create a new canvas with a configuration of plots
+
+        Args:
+            title (str): The title for the window
+            columns (int): The amount of graphs in columns
+            rows (int): The amount of graphs in rows
+    &#39;&#39;&#39;
+    fig, plts = self.plt.subplots(rows, columns, figsize=(10, 10))
+    fig.canvas.set_window_title(title)
+    fig.tight_layout(pad=5.0, w_pad=5.0, h_pad=10.0)
+    return plts</code></pre>
+</details>
+</dd>
+<dt id="app.render.grapher.Grapher.degredation"><code class="name flex">
+<span>def <span class="ident">degredation</span></span>(<span>self, track, tyres)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Sample method to plot degredation</p>
+<h2 id="args">Args</h2>
+<p>tyres
+(list):
+A list of tyres to map
+laps
+(int):
+The amount of laps to test for
+fuel
+(int):
+Starting fuel
+fuel_consumption
+(float):
+The fuel consumption rate per lap</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def degredation(self, track, tyres):
+    &#39;&#39;&#39;
+        Sample method to plot degredation
+
+        Args:
+            tyres               (list):     A list of tyres to map
+            laps                (int):      The amount of laps to test for
+            fuel                (int):      Starting fuel
+            fuel_consumption    (float):    The fuel consumption rate per lap
+    &#39;&#39;&#39;
+    class DegredationData:
+        &#39;&#39;&#39;
+            Degredation data helper
+        &#39;&#39;&#39;
+        def __init__(self):
+            self.grip = []
+            self.lap_times = []
+
+        def addData(self, grip, lap_time):
+            &#39;&#39;&#39;
+                Add data to our instance variables
+
+                Args:
+                    grip        (float): grip data
+                    lap_time    (float): lap time
+            &#39;&#39;&#39;
+            self.grip.append(grip)
+            self.lap_times.append(lap_time)
+
+    # Dictionary for degredation data
+    tyre_data = {tyre.type: DegredationData() for tyre in tyres}
+    current_fuel = track.initial_fuel
+    # Simulate a test of the tyres
+    for i in range(0, track.race_laps):
+        for tyre in tyres:
+            tyre_data[tyre.type].addData(
+                tyre.grip,
+                tyre.calculateLapTime(track.initial_fuel, current_fuel,
+                                      track.lap_time, 1.0))
+            tyre.addLap(track.initial_fuel, current_fuel, 1.0)
+        current_fuel -= track.fuel_consumption_per_lap
+
+    # Plot the results for each tyre
+    (grip_plt, lap_time_plt) = self.createPlots(&#34;Testing the simulation&#34;,
+                                                2, 1)
+    grip_plt.set_title(&#39;Degredation of all three compounds grip&#39;)
+    grip_plt.set(xlabel=&#34;lap&#34;, ylabel=&#34;grip&#34;)
+    lap_time_plt.set_title(&#39;Degredation of all three compounds lap time&#39;)
+    lap_time_plt.set(xlabel=&#34;lap&#34;, ylabel=&#34;lap_time&#34;)
+    for type, data in tyre_data.items():
+        grip_plt.plot(data.grip, label=type)
+        lap_time_plt.plot(data.lap_times, label=type)
+    grip_plt.legend()
+    lap_time_plt.legend()</code></pre>
+</details>
+</dd>
+<dt id="app.render.grapher.Grapher.graphStrategy"><code class="name flex">
+<span>def <span class="ident">graphStrategy</span></span>(<span>self, title, *cars)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Using a car object graph a strategy</p>
+<h2 id="args">Args</h2>
+<p>title
+(str):
+A title for the window
+cars
+(iterable): Args making up cars</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def graphStrategy(self, title, *cars):
+    &#39;&#39;&#39;
+        Using a car object graph a strategy
+
+        Args:
+            title   (str):      A title for the window
+            cars    (iterable): Args making up cars
+    &#39;&#39;&#39;
+    if len(cars) == 1:
+        columns, rows = (1, 1)
+    else:
+        columns, rows = (2, round(len(cars) / 2))
+    plts = self.createPlots(title, columns, rows)
+    # Convert cars into an iterable object, so we can fetch without worrying about index
+    cars = iter(cars)
+    for r in range(rows):
+        for c in range(columns):
+            try:
+                self.singlePlotGraph(
+                    plts[c, r]
+                    if rows &gt; 1 else plts[c] if columns &gt; 1 else plts,
+                    next(cars))
+            except StopIteration:
+                break</code></pre>
+</details>
+</dd>
+<dt id="app.render.grapher.Grapher.multiPlotGraph"><code class="name flex">
+<span>def <span class="ident">multiPlotGraph</span></span>(<span>self, plt, *cars)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Given a plot and any number of cars, plot the strategy</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>plt</code></strong> :&ensp;<code>subplot</code></dt>
+<dd>A plot to plot the data against</dd>
+<dt><strong><code>cars</code></strong> :&ensp;<code>iter</code></dt>
+<dd>The cars to simulate</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def multiPlotGraph(self, plt, *cars):
+    &#39;&#39;&#39;
+        Given a plot and any number of cars, plot the strategy
+
+        Args:
+            plt (subplot):  A plot to plot the data against
+            cars (iter):    The cars to simulate
+    &#39;&#39;&#39;
+    racetimes = {}
+    pit_laps = None
+    for car in cars:
+        racetimes[car.team] = {
+            &#34;pit_laps&#34;: car.pit_laps,
+            &#34;time&#34;: car.simulateRace()
+        }
+        plt.plot(car.lap_times, color=car.colour, label=car.team)
+        if not pit_laps:
+            pit_laps = len(car.pit_laps)
+    plt.set_title(self.strategyTitle(pit_laps, racetimes))
+    plt.legend()</code></pre>
+</details>
+</dd>
+<dt id="app.render.grapher.Grapher.singlePlotGraph"><code class="name flex">
+<span>def <span class="ident">singlePlotGraph</span></span>(<span>self, plt, car)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Given a plot and a car, plot the strategy</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>plt</code></strong> :&ensp;<code>subplot</code></dt>
+<dd>A sub plot to plot the data against</dd>
+<dt><strong><code>car</code></strong> :&ensp;<code>Car</code></dt>
+<dd>
+<p>The car to simulate</p>
+</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def singlePlotGraph(self, plt, car):
+    &#39;&#39;&#39;
+            Given a plot and a car, plot the strategy
+
+            Args:
+                plt (subplot):  A sub plot to plot the data against
+                car (Car):      The car to simulate
+        &#39;&#39;&#39;
+    racetime = {
+        car.team: {
+            &#34;pit_laps&#34;: car.pit_laps,
+            &#34;time&#34;: car.simulateRace()
+        }
+    }
+    plt.plot(car.lap_times, color=car.colour, label=car.team)
+    xlabel, ylabel = self.strategyAxesLabels(car)
+    plt.set_xlabel(xlabel, horizontalalignment=&#34;left&#34;, x=0)
+    plt.set_ylabel(ylabel, horizontalalignment=&#34;left&#34;, y=0)
+    plt.set_title(self.strategyTitle(len(car.pit_laps), racetime))
+    plt.legend()</code></pre>
+</details>
+</dd>
+<dt id="app.render.grapher.Grapher.strategyAxesLabels"><code class="name flex">
+<span>def <span class="ident">strategyAxesLabels</span></span>(<span>self, car)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Helper method to clean up the method above, returns a tuple of strings</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>car</code></strong> :&ensp;<code>Car</code></dt>
+<dd>A car</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple</code>(<code>str</code>)</dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def strategyAxesLabels(self, car):
+    &#39;&#39;&#39;
+        Helper method to clean up the method above, returns a tuple of strings
+
+        Args:
+            car (Car): A car
+
+        Returns:
+            tuple(str)
+    &#39;&#39;&#39;
+    return (
+        &#34;Lap Number \n&#34; +
+        f&#34;Start: {car.initial_tyre.type.capitalize()} compound\n&#34; +
+        &#39;\n&#39;.join([
+            f&#39;Lap {car.pit_laps[i]} pit for {tyre.type.capitalize()} compound&#39;
+            for i, tyre in enumerate(car.pit_tyres)
+        ]), &#34;Lap Times&#34;)</code></pre>
+</details>
+</dd>
+<dt id="app.render.grapher.Grapher.strategyTitle"><code class="name flex">
+<span>def <span class="ident">strategyTitle</span></span>(<span>self, stops, racetimes)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Helper method to clean up the methods above</p>
+<h2 id="args">Args</h2>
+<p>stops
+(int):
+Amount of stops
+racetimes
+(dict):
+Racetimes</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def strategyTitle(self, stops, racetimes):
+    &#39;&#39;&#39;
+        Helper method to clean up the methods above
+
+        Args:
+            stops         (int):    Amount of stops
+            racetimes     (dict):    Racetimes
+
+        Returns:
+            str
+    &#39;&#39;&#39;
+
+    return (f&#34;{stops} stop Strategy\n&#34; + &#34;\n&#34;.join([
+        team.capitalize() +
+        f&#34; Race Time: {self.convertFloatToTimedelta(data[&#39;time&#39;])}&#34; +
+        f&#34; pitting on laps {&#39;,&#39;.join([str(lap) for lap in data[&#39;pit_laps&#39;]])}&#34;
+        for team, data in racetimes.items()
+    ]))</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="app.render" href="index.html">app.render</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="app.render.grapher.Grapher" href="#app.render.grapher.Grapher">Grapher</a></code></h4>
+<ul class="">
+<li><code><a title="app.render.grapher.Grapher.compareGraphStrategy" href="#app.render.grapher.Grapher.compareGraphStrategy">compareGraphStrategy</a></code></li>
+<li><code><a title="app.render.grapher.Grapher.convertFloatToTimedelta" href="#app.render.grapher.Grapher.convertFloatToTimedelta">convertFloatToTimedelta</a></code></li>
+<li><code><a title="app.render.grapher.Grapher.createPlots" href="#app.render.grapher.Grapher.createPlots">createPlots</a></code></li>
+<li><code><a title="app.render.grapher.Grapher.degredation" href="#app.render.grapher.Grapher.degredation">degredation</a></code></li>
+<li><code><a title="app.render.grapher.Grapher.graphStrategy" href="#app.render.grapher.Grapher.graphStrategy">graphStrategy</a></code></li>
+<li><code><a title="app.render.grapher.Grapher.multiPlotGraph" href="#app.render.grapher.Grapher.multiPlotGraph">multiPlotGraph</a></code></li>
+<li><code><a title="app.render.grapher.Grapher.singlePlotGraph" href="#app.render.grapher.Grapher.singlePlotGraph">singlePlotGraph</a></code></li>
+<li><code><a title="app.render.grapher.Grapher.strategyAxesLabels" href="#app.render.grapher.Grapher.strategyAxesLabels">strategyAxesLabels</a></code></li>
+<li><code><a title="app.render.grapher.Grapher.strategyTitle" href="#app.render.grapher.Grapher.strategyTitle">strategyTitle</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

@@ -1,0 +1,1008 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.1" />
+<title>app.simulation.car API documentation</title>
+<meta name="description" content="A model for an F1 Car …" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>app.simulation.car</code></h1>
+</header>
+<section id="section-intro">
+<p>A model for an F1 Car</p>
+<h2 id="author">Author</h2>
+<p>Matthew Barber</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#39;&#39;&#39;
+    A model for an F1 Car
+
+    Author:
+        Matthew Barber
+&#39;&#39;&#39;
+
+import random
+from .tyre import Tyre
+
+
+class Car:
+    &#39;&#39;&#39;
+        F1 Car Model
+
+        Args:
+            track           (Track):    The track to run the simulation on
+            initial_tyre    (Tyre):     The initital tyre for the strategy
+            pit_laps        (list):     A list of ints representing laps to stop on
+            pit_tyres       (list):     A list of tyres to map to the pit laps
+            lap_time_factor (float):    A lap time factor to model car speed
+            grip_loss_factor(float):    A lap titme factor to model grip loss
+    &#39;&#39;&#39;
+    &#39;&#39;&#39;
+        Immutable constants
+    &#39;&#39;&#39;
+    START_LAP_OFFSET = 5
+
+    def __init__(self,
+                 track,
+                 initial_tyre,
+                 pit_laps,
+                 pit_tyres,
+                 lap_time_factor=1.0,
+                 grip_loss_factor=1.0,
+                 team=&#39;team&#39;,
+                 colour=&#39;blue&#39;):
+        self.track = track
+        self.initial_tyre = initial_tyre
+        self.pit_laps = pit_laps
+        self.number_of_stops = len(pit_laps)
+        self.pit_tyres = pit_tyres
+        self.lap_times = []
+        self.lap_time_factor = lap_time_factor
+        self.grip_loss_factor = grip_loss_factor
+        self.team = team
+        self.colour = colour
+
+    def __copy__(self):
+        &#39;&#39;&#39;
+            Create a copy of the object
+
+            Returns:
+                Car
+        &#39;&#39;&#39;
+        obj = type(self).__new__(self.__class__)
+        obj.__dict__.update(self.__dict__)
+        return obj
+
+    def isValidStrategy(self):
+        &#39;&#39;&#39;
+            Determines if this is a valid race strategy
+
+            Returns:
+                bool
+        &#39;&#39;&#39;
+        # First let&#39;s check compounds
+        compounds = self.pit_tyres + [self.initial_tyre]
+        # Create a set of unique values, and base this off the initial grip
+        if len(set([tyre.initial_grip for tyre in compounds])) &lt; 2:
+            return False
+        return (self.number_of_stops &gt; 0
+                and len(self.pit_tyres) == len(self.pit_laps)
+                and self.pit_laps[0] &gt; 1
+                and self.pit_laps[-1] &lt; self.track.race_laps
+                and len(self.pit_laps) == len(set(self.pit_laps)))
+
+    def resetCar(self):
+        &#39;&#39;&#39;
+            A helper method to reset the car for each simulation
+        &#39;&#39;&#39;
+        self.lap_times = []
+        for tyre in self.pit_tyres:
+            tyre.reset()
+        self.initial_tyre.reset()
+
+    def runRace(self, fuel, tyre, pit_laps, available_tyres):
+        &#39;&#39;&#39;
+            Given car specific parameters
+            Run the race on these, and return a racetime
+
+            Args:
+                fuel (float):               The current fuel on board
+                tyre (Tyre):                The starting tyre
+                pit_laps (list):            A list of laps to stop on
+                available_tyres (Iterable): The tyres for each stop
+
+            Returns:
+                    int
+        &#39;&#39;&#39;
+        racetime = self.START_LAP_OFFSET
+        for lap_number in range(0, self.track.race_laps):
+            # calculate lap time
+            lap_time = tyre.calculateLapTime(self.track.initial_fuel, fuel,
+                                             self.track.lap_time,
+                                             self.lap_time_factor)
+            # add wear to the tyre
+            tyre.addLap(self.track.initial_fuel, fuel, self.grip_loss_factor)
+            fuel -= self.track.fuel_consumption_per_lap
+            # Are we pitting at the end of the lap?
+            if lap_number in pit_laps:
+                lap_time += self.track.pit_duration
+                # Get the next available tyre
+                tyre = next(available_tyres)
+            self.lap_times.append(lap_time)
+            racetime += lap_time
+        return racetime
+
+    def simulateRace(self):
+        &#39;&#39;&#39;
+            Simulate a race
+
+            Returns:
+                int
+        &#39;&#39;&#39;
+        # Validate thet strategy
+        if not self.isValidStrategy():
+            return 10000
+        # Reset the car
+        self.resetCar()
+        # Run the race
+        return self.runRace(self.track.initial_fuel, self.initial_tyre,
+                            self.pit_laps, iter(self.pit_tyres))
+
+    def energy(self):
+        &#39;&#39;&#39;
+            Used in simulated annealing and returns a simulated race
+        &#39;&#39;&#39;
+        return self.simulateRace()
+
+    def chooseRandomTyre(self):
+        &#39;&#39;&#39;
+            Equally likely to return any one of the three tyre compounds
+
+            Returns:
+                Tyre
+        &#39;&#39;&#39;
+        return Tyre.allTyres()[random.randint(0, 2)]
+
+    def changeCompound(self):
+        &#39;&#39;&#39;
+            Change a compound on one of the pit stops
+
+            If this is a single stop, we change the tyre to a random compound
+            If this is a multi-stop, we pick one of them, and change the compound for this specific stop
+        &#39;&#39;&#39;
+
+        if self.number_of_stops == 1:
+            self.pit_tyres = [self.chooseRandomTyre()]
+        else:
+            self.pit_tyres[random.randint(0,
+                                          len(self.pit_laps) -
+                                          1)] = self.chooseRandomTyre()
+
+    def changeStartCompound(self):
+        &#39;&#39;&#39;
+            Change the start compound to a random compound
+        &#39;&#39;&#39;
+        self.initial_tyre = self.chooseRandomTyre()
+
+    def changeLap(self, variance):
+        &#39;&#39;&#39;
+            Choose a random pit lap, from the available laps and either increment, or decrementt
+        &#39;&#39;&#39;
+        pit_lap_index = random.randint(0, len(self.pit_laps) - 1)
+        pit_lap = -1
+        laps = range(self.track.race_laps)
+        while pit_lap not in laps:
+            pit_lap = self.pit_laps[pit_lap_index] + (1 if random.randint(
+                0, variance) == 0 else -1)
+        self.pit_laps[pit_lap_index] = pit_lap
+
+    def move(self, withInitialTyre=False, variance=1):
+        &#39;&#39;&#39;
+            Used in simulated annealing determine whether to change a tyre compound or a lap number
+        &#39;&#39;&#39;
+        options = 2 if withInitialTyre else 1
+        choice = random.randint(0, options)
+
+        if choice == 0:
+            self.changeCompound()
+        elif choice == 1:
+            self.changeLap(variance)
+        else:
+            self.changeStartCompound()
+
+    def __str__(self):
+        return f&#34;Car{self.team}, {self.intitial_tyre}&#34;
+
+    @staticmethod
+    def mercedes(track, initial_tyre, pit_laps, pit_tyres):
+        &#39;&#39;&#39;
+            Static method to generate a mercedes
+
+            Args:
+                track           (Track):    The track we are simulating on
+                initial_tyre    (Tyre):     The starting tyre
+                pit_laps        (list):     The pit laps
+                pit_tyres       (list):     The pit tyres
+        &#39;&#39;&#39;
+        return Car(track, initial_tyre, pit_laps, pit_tyres, 0.987, 0.966,
+                   &#39;mercedes&#39;, &#39;green&#39;)
+
+    @staticmethod
+    def ferrari(track, initial_tyre, pit_laps, pit_tyres):
+        &#39;&#39;&#39;
+            Static method to generate a ferrari
+
+            Args:
+                track           (Track):    The track we are simulating on
+                initial_tyre    (Tyre):     The starting tyre
+                pit_laps        (list):     The pit laps
+                pit_tyres       (list):     The pit tyres
+        &#39;&#39;&#39;
+        return Car(track, initial_tyre, pit_laps, pit_tyres, 0.99, 0.99,
+                   &#39;ferrari&#39;, &#39;red&#39;)
+
+    @staticmethod
+    def redbull(track, initial_tyre, pit_laps, pit_tyres):
+        &#39;&#39;&#39;
+            Static method to generate a redbull
+
+            Args:
+                track           (Track):    The track we are simulating on
+                initial_tyre    (Tyre):     The starting tyre
+                pit_laps        (list):     The pit laps
+                pit_tyres       (list):     The pit tyres
+        &#39;&#39;&#39;
+        return Car(track, initial_tyre, pit_laps, pit_tyres, 0.991, 0.982,
+                   &#39;redbull&#39;, &#39;blue&#39;)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="app.simulation.car.Car"><code class="flex name class">
+<span>class <span class="ident">Car</span></span>
+<span>(</span><span>track, initial_tyre, pit_laps, pit_tyres, lap_time_factor=1.0, grip_loss_factor=1.0, team='team', colour='blue')</span>
+</code></dt>
+<dd>
+<section class="desc"><p>F1 Car Model</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt>track
+(Track):
+The track to run the simulation on</dt>
+<dt>initial_tyre
+(Tyre):
+The initital tyre for the strategy</dt>
+<dt>pit_laps
+(list):
+A list of ints representing laps to stop on</dt>
+<dt>pit_tyres
+(list):
+A list of tyres to map to the pit laps</dt>
+<dt><strong><code>lap_time_factor</code></strong> :&ensp;<code>float</code></dt>
+<dd>A lap time factor to model car speed</dd>
+</dl>
+<p>grip_loss_factor(float):
+A lap titme factor to model grip loss</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Car:
+    &#39;&#39;&#39;
+        F1 Car Model
+
+        Args:
+            track           (Track):    The track to run the simulation on
+            initial_tyre    (Tyre):     The initital tyre for the strategy
+            pit_laps        (list):     A list of ints representing laps to stop on
+            pit_tyres       (list):     A list of tyres to map to the pit laps
+            lap_time_factor (float):    A lap time factor to model car speed
+            grip_loss_factor(float):    A lap titme factor to model grip loss
+    &#39;&#39;&#39;
+    &#39;&#39;&#39;
+        Immutable constants
+    &#39;&#39;&#39;
+    START_LAP_OFFSET = 5
+
+    def __init__(self,
+                 track,
+                 initial_tyre,
+                 pit_laps,
+                 pit_tyres,
+                 lap_time_factor=1.0,
+                 grip_loss_factor=1.0,
+                 team=&#39;team&#39;,
+                 colour=&#39;blue&#39;):
+        self.track = track
+        self.initial_tyre = initial_tyre
+        self.pit_laps = pit_laps
+        self.number_of_stops = len(pit_laps)
+        self.pit_tyres = pit_tyres
+        self.lap_times = []
+        self.lap_time_factor = lap_time_factor
+        self.grip_loss_factor = grip_loss_factor
+        self.team = team
+        self.colour = colour
+
+    def __copy__(self):
+        &#39;&#39;&#39;
+            Create a copy of the object
+
+            Returns:
+                Car
+        &#39;&#39;&#39;
+        obj = type(self).__new__(self.__class__)
+        obj.__dict__.update(self.__dict__)
+        return obj
+
+    def isValidStrategy(self):
+        &#39;&#39;&#39;
+            Determines if this is a valid race strategy
+
+            Returns:
+                bool
+        &#39;&#39;&#39;
+        # First let&#39;s check compounds
+        compounds = self.pit_tyres + [self.initial_tyre]
+        # Create a set of unique values, and base this off the initial grip
+        if len(set([tyre.initial_grip for tyre in compounds])) &lt; 2:
+            return False
+        return (self.number_of_stops &gt; 0
+                and len(self.pit_tyres) == len(self.pit_laps)
+                and self.pit_laps[0] &gt; 1
+                and self.pit_laps[-1] &lt; self.track.race_laps
+                and len(self.pit_laps) == len(set(self.pit_laps)))
+
+    def resetCar(self):
+        &#39;&#39;&#39;
+            A helper method to reset the car for each simulation
+        &#39;&#39;&#39;
+        self.lap_times = []
+        for tyre in self.pit_tyres:
+            tyre.reset()
+        self.initial_tyre.reset()
+
+    def runRace(self, fuel, tyre, pit_laps, available_tyres):
+        &#39;&#39;&#39;
+            Given car specific parameters
+            Run the race on these, and return a racetime
+
+            Args:
+                fuel (float):               The current fuel on board
+                tyre (Tyre):                The starting tyre
+                pit_laps (list):            A list of laps to stop on
+                available_tyres (Iterable): The tyres for each stop
+
+            Returns:
+                    int
+        &#39;&#39;&#39;
+        racetime = self.START_LAP_OFFSET
+        for lap_number in range(0, self.track.race_laps):
+            # calculate lap time
+            lap_time = tyre.calculateLapTime(self.track.initial_fuel, fuel,
+                                             self.track.lap_time,
+                                             self.lap_time_factor)
+            # add wear to the tyre
+            tyre.addLap(self.track.initial_fuel, fuel, self.grip_loss_factor)
+            fuel -= self.track.fuel_consumption_per_lap
+            # Are we pitting at the end of the lap?
+            if lap_number in pit_laps:
+                lap_time += self.track.pit_duration
+                # Get the next available tyre
+                tyre = next(available_tyres)
+            self.lap_times.append(lap_time)
+            racetime += lap_time
+        return racetime
+
+    def simulateRace(self):
+        &#39;&#39;&#39;
+            Simulate a race
+
+            Returns:
+                int
+        &#39;&#39;&#39;
+        # Validate thet strategy
+        if not self.isValidStrategy():
+            return 10000
+        # Reset the car
+        self.resetCar()
+        # Run the race
+        return self.runRace(self.track.initial_fuel, self.initial_tyre,
+                            self.pit_laps, iter(self.pit_tyres))
+
+    def energy(self):
+        &#39;&#39;&#39;
+            Used in simulated annealing and returns a simulated race
+        &#39;&#39;&#39;
+        return self.simulateRace()
+
+    def chooseRandomTyre(self):
+        &#39;&#39;&#39;
+            Equally likely to return any one of the three tyre compounds
+
+            Returns:
+                Tyre
+        &#39;&#39;&#39;
+        return Tyre.allTyres()[random.randint(0, 2)]
+
+    def changeCompound(self):
+        &#39;&#39;&#39;
+            Change a compound on one of the pit stops
+
+            If this is a single stop, we change the tyre to a random compound
+            If this is a multi-stop, we pick one of them, and change the compound for this specific stop
+        &#39;&#39;&#39;
+
+        if self.number_of_stops == 1:
+            self.pit_tyres = [self.chooseRandomTyre()]
+        else:
+            self.pit_tyres[random.randint(0,
+                                          len(self.pit_laps) -
+                                          1)] = self.chooseRandomTyre()
+
+    def changeStartCompound(self):
+        &#39;&#39;&#39;
+            Change the start compound to a random compound
+        &#39;&#39;&#39;
+        self.initial_tyre = self.chooseRandomTyre()
+
+    def changeLap(self, variance):
+        &#39;&#39;&#39;
+            Choose a random pit lap, from the available laps and either increment, or decrementt
+        &#39;&#39;&#39;
+        pit_lap_index = random.randint(0, len(self.pit_laps) - 1)
+        pit_lap = -1
+        laps = range(self.track.race_laps)
+        while pit_lap not in laps:
+            pit_lap = self.pit_laps[pit_lap_index] + (1 if random.randint(
+                0, variance) == 0 else -1)
+        self.pit_laps[pit_lap_index] = pit_lap
+
+    def move(self, withInitialTyre=False, variance=1):
+        &#39;&#39;&#39;
+            Used in simulated annealing determine whether to change a tyre compound or a lap number
+        &#39;&#39;&#39;
+        options = 2 if withInitialTyre else 1
+        choice = random.randint(0, options)
+
+        if choice == 0:
+            self.changeCompound()
+        elif choice == 1:
+            self.changeLap(variance)
+        else:
+            self.changeStartCompound()
+
+    def __str__(self):
+        return f&#34;Car{self.team}, {self.intitial_tyre}&#34;
+
+    @staticmethod
+    def mercedes(track, initial_tyre, pit_laps, pit_tyres):
+        &#39;&#39;&#39;
+            Static method to generate a mercedes
+
+            Args:
+                track           (Track):    The track we are simulating on
+                initial_tyre    (Tyre):     The starting tyre
+                pit_laps        (list):     The pit laps
+                pit_tyres       (list):     The pit tyres
+        &#39;&#39;&#39;
+        return Car(track, initial_tyre, pit_laps, pit_tyres, 0.987, 0.966,
+                   &#39;mercedes&#39;, &#39;green&#39;)
+
+    @staticmethod
+    def ferrari(track, initial_tyre, pit_laps, pit_tyres):
+        &#39;&#39;&#39;
+            Static method to generate a ferrari
+
+            Args:
+                track           (Track):    The track we are simulating on
+                initial_tyre    (Tyre):     The starting tyre
+                pit_laps        (list):     The pit laps
+                pit_tyres       (list):     The pit tyres
+        &#39;&#39;&#39;
+        return Car(track, initial_tyre, pit_laps, pit_tyres, 0.99, 0.99,
+                   &#39;ferrari&#39;, &#39;red&#39;)
+
+    @staticmethod
+    def redbull(track, initial_tyre, pit_laps, pit_tyres):
+        &#39;&#39;&#39;
+            Static method to generate a redbull
+
+            Args:
+                track           (Track):    The track we are simulating on
+                initial_tyre    (Tyre):     The starting tyre
+                pit_laps        (list):     The pit laps
+                pit_tyres       (list):     The pit tyres
+        &#39;&#39;&#39;
+        return Car(track, initial_tyre, pit_laps, pit_tyres, 0.991, 0.982,
+                   &#39;redbull&#39;, &#39;blue&#39;)</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="app.simulation.car.Car.START_LAP_OFFSET"><code class="name">var <span class="ident">START_LAP_OFFSET</span></code></dt>
+<dd>
+<section class="desc"><p>int([x]) -&gt; integer
+int(x, base=10) -&gt; integer</p>
+<p>Convert a number or string to an integer, or return 0 if no arguments
+are given.
+If x is a number, return x.<strong>int</strong>().
+For floating point
+numbers, this truncates towards zero.</p>
+<p>If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.
+The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.
+The base defaults to 10.
+Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.</p>
+<pre><code>&gt;&gt;&gt; int('0b100', base=0)
+4
+</code></pre></section>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="app.simulation.car.Car.ferrari"><code class="name flex">
+<span>def <span class="ident">ferrari</span></span>(<span>track, initial_tyre, pit_laps, pit_tyres)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Static method to generate a ferrari</p>
+<h2 id="args">Args</h2>
+<p>track
+(Track):
+The track we are simulating on
+initial_tyre
+(Tyre):
+The starting tyre
+pit_laps
+(list):
+The pit laps
+pit_tyres
+(list):
+The pit tyres</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def ferrari(track, initial_tyre, pit_laps, pit_tyres):
+    &#39;&#39;&#39;
+        Static method to generate a ferrari
+
+        Args:
+            track           (Track):    The track we are simulating on
+            initial_tyre    (Tyre):     The starting tyre
+            pit_laps        (list):     The pit laps
+            pit_tyres       (list):     The pit tyres
+    &#39;&#39;&#39;
+    return Car(track, initial_tyre, pit_laps, pit_tyres, 0.99, 0.99,
+               &#39;ferrari&#39;, &#39;red&#39;)</code></pre>
+</details>
+</dd>
+<dt id="app.simulation.car.Car.mercedes"><code class="name flex">
+<span>def <span class="ident">mercedes</span></span>(<span>track, initial_tyre, pit_laps, pit_tyres)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Static method to generate a mercedes</p>
+<h2 id="args">Args</h2>
+<p>track
+(Track):
+The track we are simulating on
+initial_tyre
+(Tyre):
+The starting tyre
+pit_laps
+(list):
+The pit laps
+pit_tyres
+(list):
+The pit tyres</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def mercedes(track, initial_tyre, pit_laps, pit_tyres):
+    &#39;&#39;&#39;
+        Static method to generate a mercedes
+
+        Args:
+            track           (Track):    The track we are simulating on
+            initial_tyre    (Tyre):     The starting tyre
+            pit_laps        (list):     The pit laps
+            pit_tyres       (list):     The pit tyres
+    &#39;&#39;&#39;
+    return Car(track, initial_tyre, pit_laps, pit_tyres, 0.987, 0.966,
+               &#39;mercedes&#39;, &#39;green&#39;)</code></pre>
+</details>
+</dd>
+<dt id="app.simulation.car.Car.redbull"><code class="name flex">
+<span>def <span class="ident">redbull</span></span>(<span>track, initial_tyre, pit_laps, pit_tyres)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Static method to generate a redbull</p>
+<h2 id="args">Args</h2>
+<p>track
+(Track):
+The track we are simulating on
+initial_tyre
+(Tyre):
+The starting tyre
+pit_laps
+(list):
+The pit laps
+pit_tyres
+(list):
+The pit tyres</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def redbull(track, initial_tyre, pit_laps, pit_tyres):
+    &#39;&#39;&#39;
+        Static method to generate a redbull
+
+        Args:
+            track           (Track):    The track we are simulating on
+            initial_tyre    (Tyre):     The starting tyre
+            pit_laps        (list):     The pit laps
+            pit_tyres       (list):     The pit tyres
+    &#39;&#39;&#39;
+    return Car(track, initial_tyre, pit_laps, pit_tyres, 0.991, 0.982,
+               &#39;redbull&#39;, &#39;blue&#39;)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="app.simulation.car.Car.changeCompound"><code class="name flex">
+<span>def <span class="ident">changeCompound</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Change a compound on one of the pit stops</p>
+<p>If this is a single stop, we change the tyre to a random compound
+If this is a multi-stop, we pick one of them, and change the compound for this specific stop</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def changeCompound(self):
+    &#39;&#39;&#39;
+        Change a compound on one of the pit stops
+
+        If this is a single stop, we change the tyre to a random compound
+        If this is a multi-stop, we pick one of them, and change the compound for this specific stop
+    &#39;&#39;&#39;
+
+    if self.number_of_stops == 1:
+        self.pit_tyres = [self.chooseRandomTyre()]
+    else:
+        self.pit_tyres[random.randint(0,
+                                      len(self.pit_laps) -
+                                      1)] = self.chooseRandomTyre()</code></pre>
+</details>
+</dd>
+<dt id="app.simulation.car.Car.changeLap"><code class="name flex">
+<span>def <span class="ident">changeLap</span></span>(<span>self, variance)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Choose a random pit lap, from the available laps and either increment, or decrementt</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def changeLap(self, variance):
+    &#39;&#39;&#39;
+        Choose a random pit lap, from the available laps and either increment, or decrementt
+    &#39;&#39;&#39;
+    pit_lap_index = random.randint(0, len(self.pit_laps) - 1)
+    pit_lap = -1
+    laps = range(self.track.race_laps)
+    while pit_lap not in laps:
+        pit_lap = self.pit_laps[pit_lap_index] + (1 if random.randint(
+            0, variance) == 0 else -1)
+    self.pit_laps[pit_lap_index] = pit_lap</code></pre>
+</details>
+</dd>
+<dt id="app.simulation.car.Car.changeStartCompound"><code class="name flex">
+<span>def <span class="ident">changeStartCompound</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Change the start compound to a random compound</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def changeStartCompound(self):
+    &#39;&#39;&#39;
+        Change the start compound to a random compound
+    &#39;&#39;&#39;
+    self.initial_tyre = self.chooseRandomTyre()</code></pre>
+</details>
+</dd>
+<dt id="app.simulation.car.Car.chooseRandomTyre"><code class="name flex">
+<span>def <span class="ident">chooseRandomTyre</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Equally likely to return any one of the three tyre compounds</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Tyre</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def chooseRandomTyre(self):
+    &#39;&#39;&#39;
+        Equally likely to return any one of the three tyre compounds
+
+        Returns:
+            Tyre
+    &#39;&#39;&#39;
+    return Tyre.allTyres()[random.randint(0, 2)]</code></pre>
+</details>
+</dd>
+<dt id="app.simulation.car.Car.energy"><code class="name flex">
+<span>def <span class="ident">energy</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Used in simulated annealing and returns a simulated race</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def energy(self):
+    &#39;&#39;&#39;
+        Used in simulated annealing and returns a simulated race
+    &#39;&#39;&#39;
+    return self.simulateRace()</code></pre>
+</details>
+</dd>
+<dt id="app.simulation.car.Car.isValidStrategy"><code class="name flex">
+<span>def <span class="ident">isValidStrategy</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Determines if this is a valid race strategy</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def isValidStrategy(self):
+    &#39;&#39;&#39;
+        Determines if this is a valid race strategy
+
+        Returns:
+            bool
+    &#39;&#39;&#39;
+    # First let&#39;s check compounds
+    compounds = self.pit_tyres + [self.initial_tyre]
+    # Create a set of unique values, and base this off the initial grip
+    if len(set([tyre.initial_grip for tyre in compounds])) &lt; 2:
+        return False
+    return (self.number_of_stops &gt; 0
+            and len(self.pit_tyres) == len(self.pit_laps)
+            and self.pit_laps[0] &gt; 1
+            and self.pit_laps[-1] &lt; self.track.race_laps
+            and len(self.pit_laps) == len(set(self.pit_laps)))</code></pre>
+</details>
+</dd>
+<dt id="app.simulation.car.Car.move"><code class="name flex">
+<span>def <span class="ident">move</span></span>(<span>self, withInitialTyre=False, variance=1)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Used in simulated annealing determine whether to change a tyre compound or a lap number</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def move(self, withInitialTyre=False, variance=1):
+    &#39;&#39;&#39;
+        Used in simulated annealing determine whether to change a tyre compound or a lap number
+    &#39;&#39;&#39;
+    options = 2 if withInitialTyre else 1
+    choice = random.randint(0, options)
+
+    if choice == 0:
+        self.changeCompound()
+    elif choice == 1:
+        self.changeLap(variance)
+    else:
+        self.changeStartCompound()</code></pre>
+</details>
+</dd>
+<dt id="app.simulation.car.Car.resetCar"><code class="name flex">
+<span>def <span class="ident">resetCar</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>A helper method to reset the car for each simulation</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def resetCar(self):
+    &#39;&#39;&#39;
+        A helper method to reset the car for each simulation
+    &#39;&#39;&#39;
+    self.lap_times = []
+    for tyre in self.pit_tyres:
+        tyre.reset()
+    self.initial_tyre.reset()</code></pre>
+</details>
+</dd>
+<dt id="app.simulation.car.Car.runRace"><code class="name flex">
+<span>def <span class="ident">runRace</span></span>(<span>self, fuel, tyre, pit_laps, available_tyres)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Given car specific parameters
+Run the race on these, and return a racetime</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>fuel</code></strong> :&ensp;<code>float</code></dt>
+<dd>
+<pre><code>      The current fuel on board
+</code></pre>
+</dd>
+<dt><strong><code>tyre</code></strong> :&ensp;<code>Tyre</code></dt>
+<dd>
+<pre><code>       The starting tyre
+</code></pre>
+</dd>
+<dt><strong><code>pit_laps</code></strong> :&ensp;<code>list</code></dt>
+<dd>
+<pre><code>   A list of laps to stop on
+</code></pre>
+</dd>
+<dt><strong><code>available_tyres</code></strong> :&ensp;<code>Iterable</code></dt>
+<dd>The tyres for each stop</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>int</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def runRace(self, fuel, tyre, pit_laps, available_tyres):
+    &#39;&#39;&#39;
+        Given car specific parameters
+        Run the race on these, and return a racetime
+
+        Args:
+            fuel (float):               The current fuel on board
+            tyre (Tyre):                The starting tyre
+            pit_laps (list):            A list of laps to stop on
+            available_tyres (Iterable): The tyres for each stop
+
+        Returns:
+                int
+    &#39;&#39;&#39;
+    racetime = self.START_LAP_OFFSET
+    for lap_number in range(0, self.track.race_laps):
+        # calculate lap time
+        lap_time = tyre.calculateLapTime(self.track.initial_fuel, fuel,
+                                         self.track.lap_time,
+                                         self.lap_time_factor)
+        # add wear to the tyre
+        tyre.addLap(self.track.initial_fuel, fuel, self.grip_loss_factor)
+        fuel -= self.track.fuel_consumption_per_lap
+        # Are we pitting at the end of the lap?
+        if lap_number in pit_laps:
+            lap_time += self.track.pit_duration
+            # Get the next available tyre
+            tyre = next(available_tyres)
+        self.lap_times.append(lap_time)
+        racetime += lap_time
+    return racetime</code></pre>
+</details>
+</dd>
+<dt id="app.simulation.car.Car.simulateRace"><code class="name flex">
+<span>def <span class="ident">simulateRace</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Simulate a race</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>int</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def simulateRace(self):
+    &#39;&#39;&#39;
+        Simulate a race
+
+        Returns:
+            int
+    &#39;&#39;&#39;
+    # Validate thet strategy
+    if not self.isValidStrategy():
+        return 10000
+    # Reset the car
+    self.resetCar()
+    # Run the race
+    return self.runRace(self.track.initial_fuel, self.initial_tyre,
+                        self.pit_laps, iter(self.pit_tyres))</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="app.simulation" href="index.html">app.simulation</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="app.simulation.car.Car" href="#app.simulation.car.Car">Car</a></code></h4>
+<ul class="two-column">
+<li><code><a title="app.simulation.car.Car.START_LAP_OFFSET" href="#app.simulation.car.Car.START_LAP_OFFSET">START_LAP_OFFSET</a></code></li>
+<li><code><a title="app.simulation.car.Car.changeCompound" href="#app.simulation.car.Car.changeCompound">changeCompound</a></code></li>
+<li><code><a title="app.simulation.car.Car.changeLap" href="#app.simulation.car.Car.changeLap">changeLap</a></code></li>
+<li><code><a title="app.simulation.car.Car.changeStartCompound" href="#app.simulation.car.Car.changeStartCompound">changeStartCompound</a></code></li>
+<li><code><a title="app.simulation.car.Car.chooseRandomTyre" href="#app.simulation.car.Car.chooseRandomTyre">chooseRandomTyre</a></code></li>
+<li><code><a title="app.simulation.car.Car.energy" href="#app.simulation.car.Car.energy">energy</a></code></li>
+<li><code><a title="app.simulation.car.Car.ferrari" href="#app.simulation.car.Car.ferrari">ferrari</a></code></li>
+<li><code><a title="app.simulation.car.Car.isValidStrategy" href="#app.simulation.car.Car.isValidStrategy">isValidStrategy</a></code></li>
+<li><code><a title="app.simulation.car.Car.mercedes" href="#app.simulation.car.Car.mercedes">mercedes</a></code></li>
+<li><code><a title="app.simulation.car.Car.move" href="#app.simulation.car.Car.move">move</a></code></li>
+<li><code><a title="app.simulation.car.Car.redbull" href="#app.simulation.car.Car.redbull">redbull</a></code></li>
+<li><code><a title="app.simulation.car.Car.resetCar" href="#app.simulation.car.Car.resetCar">resetCar</a></code></li>
+<li><code><a title="app.simulation.car.Car.runRace" href="#app.simulation.car.Car.runRace">runRace</a></code></li>
+<li><code><a title="app.simulation.car.Car.simulateRace" href="#app.simulation.car.Car.simulateRace">simulateRace</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

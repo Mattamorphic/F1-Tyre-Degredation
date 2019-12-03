@@ -1,0 +1,645 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.1" />
+<title>app.simulation.tyre API documentation</title>
+<meta name="description" content="Tyre Class …" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>app.simulation.tyre</code></h1>
+</header>
+<section id="section-intro">
+<p>Tyre Class</p>
+<h2 id="author">Author</h2>
+<p>Matthew Barber (mfmbarber@gmail.com)</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#39;&#39;&#39;
+    Tyre Class
+
+    Author:
+        Matthew Barber (mfmbarber@gmail.com)
+&#39;&#39;&#39;
+import random
+
+
+class Tyre:
+    &#39;&#39;&#39;
+        Class representing an F1 tyre
+
+        Args:
+            type (str)          : The type of the tyre
+            initial_grip (float): The initital grip for the tyre
+            initial_deg  (float): The standard degredation
+            switch_point (float): The wear point where the grip falls off
+            switch_deg   (float): A multiplier applied to degredation
+    &#39;&#39;&#39;
+    GRIP_LIMIT = 0.3
+
+    def __init__(self,
+                 type,
+                 initial_grip,
+                 initial_deg,
+                 switch_point,
+                 switch_deg=1.25):
+        self.type = type
+        self.grip = initial_grip
+        self.initial_grip = initial_grip
+        self.deg = initial_deg
+        self.initial_deg = initial_deg
+        self.switch_point = switch_point
+        self.switch_deg = switch_deg
+
+    def __eq__(self, tyre):
+        &#39;&#39;&#39;
+            Tyres are equal if the properties are the same
+
+            Args:
+                tyre (Tyre): Compare tyre
+        &#39;&#39;&#39;
+        if not isinstance(Tyre, type):
+            raise ValueError(&#39;operands must be of type Tyre&#39;)
+        return (self.initial_grip == tyre.initial_grip
+                and self.initial_deg == tyre.initial_deg
+                and self.switch_point == tyre.switch_point
+                and self.switch_deg == tyre.switch_deg)
+
+    def fuelEffect(self, initial_fuel, current_fuel):
+        &#39;&#39;&#39;
+            Determine the effect that fuel is having on the car
+
+            Args:
+                current_fuel (float): The current fuel onboard
+
+            Returns:
+                (float)
+        &#39;&#39;&#39;
+        return (current_fuel / (6 * initial_fuel)) + 0.83
+
+    def addLap(self, initial_fuel, current_fuel, grip_loss_factor):
+        &#39;&#39;&#39;
+            Simulates the wear of the tyre after another lap has been completed.
+            self.grip -= (self.deg * self.switch_deg) scaled by -&gt; self.fuelEffect
+
+            Args:
+                current_fuel        (float): The current fuel on board
+                grip_loss_factor    (float): Used for adjusting based on car
+
+            Returns:
+                (float)
+        &#39;&#39;&#39;
+        if self.grip &lt; self.GRIP_LIMIT:
+            self.grip = 0
+            return self.grip
+        if self.grip &lt; self.switch_point:
+            self.deg = self.deg * self.switch_deg
+        self.grip -= (self.deg * self.fuelEffect(
+            initial_fuel, current_fuel)) * grip_loss_factor
+        return self.grip
+
+    def calculateLapTime(self, initial_fuel, current_fuel, base_lap_time,
+                         lap_time_factor):
+        &#39;&#39;&#39;
+            Calculates and returns the laptime based on the current fuel level and state of the tyre.
+
+            Args:
+                fuel            (float): The current fuel on board
+                lap_time_factor (float): Used to simulate quicker cars
+
+            Returns:
+                float
+        &#39;&#39;&#39;
+        lap_time = ((base_lap_time * lap_time_factor) -
+                    (100 - ((100 / initial_fuel) * current_fuel)) *
+                    (2 / initial_fuel))
+        return (lap_time + 2 if self.grip &lt; self.GRIP_LIMIT else lap_time -
+                self.grip)
+
+    def reset(self):
+        &#39;&#39;&#39;
+            Resets the tyre to its initial state
+        &#39;&#39;&#39;
+        self.grip = self.initial_grip
+        self.deg = self.initial_deg
+
+    @staticmethod
+    def softTyre():
+        &#39;&#39;&#39;
+            Static function to generate a soft tyre
+
+            Returns:
+                (Tyre)
+        &#39;&#39;&#39;
+        return Tyre(type=&#39;soft&#39;,
+                    initial_grip=2.0,
+                    initial_deg=0.03,
+                    switch_point=1.8)
+
+    @staticmethod
+    def mediumTyre():
+        &#39;&#39;&#39;
+            Static function to generate a medium tyre
+
+            Returns:
+                (Tyre)
+        &#39;&#39;&#39;
+        return Tyre(type=&#39;medium&#39;,
+                    initial_grip=1.5,
+                    initial_deg=0.02,
+                    switch_point=1.2)
+
+    @staticmethod
+    def hardTyre():
+        &#39;&#39;&#39;
+            Static function to generate a hard tyre
+
+            Returns:
+                (Tyre)
+        &#39;&#39;&#39;
+        return Tyre(type=&#39;hard&#39;,
+                    initial_grip=1.0,
+                    initial_deg=0.01,
+                    switch_point=0.75)
+
+    @staticmethod
+    def allTyres():
+        &#39;&#39;&#39;
+            Static function to generate a soft tyre
+
+            Returns:
+                (Tyre[])
+        &#39;&#39;&#39;
+        return [Tyre.softTyre(), Tyre.mediumTyre(), Tyre.hardTyre()]</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="app.simulation.tyre.Tyre"><code class="flex name class">
+<span>class <span class="ident">Tyre</span></span>
+<span>(</span><span>type, initial_grip, initial_deg, switch_point, switch_deg=1.25)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Class representing an F1 tyre</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt>type (str)
+: The type of the tyre</dt>
+<dt><strong><code>initial_grip</code></strong> :&ensp;<code>float</code></dt>
+<dd>The initital grip for the tyre</dd>
+<dt>initial_deg
+(float): The standard degredation</dt>
+<dt><strong><code>switch_point</code></strong> :&ensp;<code>float</code></dt>
+<dd>The wear point where the grip falls off</dd>
+</dl>
+<p>switch_deg
+(float): A multiplier applied to degredation</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Tyre:
+    &#39;&#39;&#39;
+        Class representing an F1 tyre
+
+        Args:
+            type (str)          : The type of the tyre
+            initial_grip (float): The initital grip for the tyre
+            initial_deg  (float): The standard degredation
+            switch_point (float): The wear point where the grip falls off
+            switch_deg   (float): A multiplier applied to degredation
+    &#39;&#39;&#39;
+    GRIP_LIMIT = 0.3
+
+    def __init__(self,
+                 type,
+                 initial_grip,
+                 initial_deg,
+                 switch_point,
+                 switch_deg=1.25):
+        self.type = type
+        self.grip = initial_grip
+        self.initial_grip = initial_grip
+        self.deg = initial_deg
+        self.initial_deg = initial_deg
+        self.switch_point = switch_point
+        self.switch_deg = switch_deg
+
+    def __eq__(self, tyre):
+        &#39;&#39;&#39;
+            Tyres are equal if the properties are the same
+
+            Args:
+                tyre (Tyre): Compare tyre
+        &#39;&#39;&#39;
+        if not isinstance(Tyre, type):
+            raise ValueError(&#39;operands must be of type Tyre&#39;)
+        return (self.initial_grip == tyre.initial_grip
+                and self.initial_deg == tyre.initial_deg
+                and self.switch_point == tyre.switch_point
+                and self.switch_deg == tyre.switch_deg)
+
+    def fuelEffect(self, initial_fuel, current_fuel):
+        &#39;&#39;&#39;
+            Determine the effect that fuel is having on the car
+
+            Args:
+                current_fuel (float): The current fuel onboard
+
+            Returns:
+                (float)
+        &#39;&#39;&#39;
+        return (current_fuel / (6 * initial_fuel)) + 0.83
+
+    def addLap(self, initial_fuel, current_fuel, grip_loss_factor):
+        &#39;&#39;&#39;
+            Simulates the wear of the tyre after another lap has been completed.
+            self.grip -= (self.deg * self.switch_deg) scaled by -&gt; self.fuelEffect
+
+            Args:
+                current_fuel        (float): The current fuel on board
+                grip_loss_factor    (float): Used for adjusting based on car
+
+            Returns:
+                (float)
+        &#39;&#39;&#39;
+        if self.grip &lt; self.GRIP_LIMIT:
+            self.grip = 0
+            return self.grip
+        if self.grip &lt; self.switch_point:
+            self.deg = self.deg * self.switch_deg
+        self.grip -= (self.deg * self.fuelEffect(
+            initial_fuel, current_fuel)) * grip_loss_factor
+        return self.grip
+
+    def calculateLapTime(self, initial_fuel, current_fuel, base_lap_time,
+                         lap_time_factor):
+        &#39;&#39;&#39;
+            Calculates and returns the laptime based on the current fuel level and state of the tyre.
+
+            Args:
+                fuel            (float): The current fuel on board
+                lap_time_factor (float): Used to simulate quicker cars
+
+            Returns:
+                float
+        &#39;&#39;&#39;
+        lap_time = ((base_lap_time * lap_time_factor) -
+                    (100 - ((100 / initial_fuel) * current_fuel)) *
+                    (2 / initial_fuel))
+        return (lap_time + 2 if self.grip &lt; self.GRIP_LIMIT else lap_time -
+                self.grip)
+
+    def reset(self):
+        &#39;&#39;&#39;
+            Resets the tyre to its initial state
+        &#39;&#39;&#39;
+        self.grip = self.initial_grip
+        self.deg = self.initial_deg
+
+    @staticmethod
+    def softTyre():
+        &#39;&#39;&#39;
+            Static function to generate a soft tyre
+
+            Returns:
+                (Tyre)
+        &#39;&#39;&#39;
+        return Tyre(type=&#39;soft&#39;,
+                    initial_grip=2.0,
+                    initial_deg=0.03,
+                    switch_point=1.8)
+
+    @staticmethod
+    def mediumTyre():
+        &#39;&#39;&#39;
+            Static function to generate a medium tyre
+
+            Returns:
+                (Tyre)
+        &#39;&#39;&#39;
+        return Tyre(type=&#39;medium&#39;,
+                    initial_grip=1.5,
+                    initial_deg=0.02,
+                    switch_point=1.2)
+
+    @staticmethod
+    def hardTyre():
+        &#39;&#39;&#39;
+            Static function to generate a hard tyre
+
+            Returns:
+                (Tyre)
+        &#39;&#39;&#39;
+        return Tyre(type=&#39;hard&#39;,
+                    initial_grip=1.0,
+                    initial_deg=0.01,
+                    switch_point=0.75)
+
+    @staticmethod
+    def allTyres():
+        &#39;&#39;&#39;
+            Static function to generate a soft tyre
+
+            Returns:
+                (Tyre[])
+        &#39;&#39;&#39;
+        return [Tyre.softTyre(), Tyre.mediumTyre(), Tyre.hardTyre()]</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="app.simulation.tyre.Tyre.GRIP_LIMIT"><code class="name">var <span class="ident">GRIP_LIMIT</span></code></dt>
+<dd>
+<section class="desc"><p>Convert a string or number to a floating point number, if possible.</p></section>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="app.simulation.tyre.Tyre.allTyres"><code class="name flex">
+<span>def <span class="ident">allTyres</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Static function to generate a soft tyre</p>
+<h2 id="returns">Returns</h2>
+<p>(Tyre[])</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def allTyres():
+    &#39;&#39;&#39;
+        Static function to generate a soft tyre
+
+        Returns:
+            (Tyre[])
+    &#39;&#39;&#39;
+    return [Tyre.softTyre(), Tyre.mediumTyre(), Tyre.hardTyre()]</code></pre>
+</details>
+</dd>
+<dt id="app.simulation.tyre.Tyre.hardTyre"><code class="name flex">
+<span>def <span class="ident">hardTyre</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Static function to generate a hard tyre</p>
+<h2 id="returns">Returns</h2>
+<p>(Tyre)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def hardTyre():
+    &#39;&#39;&#39;
+        Static function to generate a hard tyre
+
+        Returns:
+            (Tyre)
+    &#39;&#39;&#39;
+    return Tyre(type=&#39;hard&#39;,
+                initial_grip=1.0,
+                initial_deg=0.01,
+                switch_point=0.75)</code></pre>
+</details>
+</dd>
+<dt id="app.simulation.tyre.Tyre.mediumTyre"><code class="name flex">
+<span>def <span class="ident">mediumTyre</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Static function to generate a medium tyre</p>
+<h2 id="returns">Returns</h2>
+<p>(Tyre)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def mediumTyre():
+    &#39;&#39;&#39;
+        Static function to generate a medium tyre
+
+        Returns:
+            (Tyre)
+    &#39;&#39;&#39;
+    return Tyre(type=&#39;medium&#39;,
+                initial_grip=1.5,
+                initial_deg=0.02,
+                switch_point=1.2)</code></pre>
+</details>
+</dd>
+<dt id="app.simulation.tyre.Tyre.softTyre"><code class="name flex">
+<span>def <span class="ident">softTyre</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Static function to generate a soft tyre</p>
+<h2 id="returns">Returns</h2>
+<p>(Tyre)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def softTyre():
+    &#39;&#39;&#39;
+        Static function to generate a soft tyre
+
+        Returns:
+            (Tyre)
+    &#39;&#39;&#39;
+    return Tyre(type=&#39;soft&#39;,
+                initial_grip=2.0,
+                initial_deg=0.03,
+                switch_point=1.8)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="app.simulation.tyre.Tyre.addLap"><code class="name flex">
+<span>def <span class="ident">addLap</span></span>(<span>self, initial_fuel, current_fuel, grip_loss_factor)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Simulates the wear of the tyre after another lap has been completed.
+self.grip -= (self.deg * self.switch_deg) scaled by -&gt; self.fuelEffect</p>
+<h2 id="args">Args</h2>
+<p>current_fuel
+(float): The current fuel on board
+grip_loss_factor
+(float): Used for adjusting based on car</p>
+<h2 id="returns">Returns</h2>
+<p>(float)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addLap(self, initial_fuel, current_fuel, grip_loss_factor):
+    &#39;&#39;&#39;
+        Simulates the wear of the tyre after another lap has been completed.
+        self.grip -= (self.deg * self.switch_deg) scaled by -&gt; self.fuelEffect
+
+        Args:
+            current_fuel        (float): The current fuel on board
+            grip_loss_factor    (float): Used for adjusting based on car
+
+        Returns:
+            (float)
+    &#39;&#39;&#39;
+    if self.grip &lt; self.GRIP_LIMIT:
+        self.grip = 0
+        return self.grip
+    if self.grip &lt; self.switch_point:
+        self.deg = self.deg * self.switch_deg
+    self.grip -= (self.deg * self.fuelEffect(
+        initial_fuel, current_fuel)) * grip_loss_factor
+    return self.grip</code></pre>
+</details>
+</dd>
+<dt id="app.simulation.tyre.Tyre.calculateLapTime"><code class="name flex">
+<span>def <span class="ident">calculateLapTime</span></span>(<span>self, initial_fuel, current_fuel, base_lap_time, lap_time_factor)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Calculates and returns the laptime based on the current fuel level and state of the tyre.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt>fuel
+(float): The current fuel on board</dt>
+<dt><strong><code>lap_time_factor</code></strong> :&ensp;<code>float</code></dt>
+<dd>Used to simulate quicker cars</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def calculateLapTime(self, initial_fuel, current_fuel, base_lap_time,
+                     lap_time_factor):
+    &#39;&#39;&#39;
+        Calculates and returns the laptime based on the current fuel level and state of the tyre.
+
+        Args:
+            fuel            (float): The current fuel on board
+            lap_time_factor (float): Used to simulate quicker cars
+
+        Returns:
+            float
+    &#39;&#39;&#39;
+    lap_time = ((base_lap_time * lap_time_factor) -
+                (100 - ((100 / initial_fuel) * current_fuel)) *
+                (2 / initial_fuel))
+    return (lap_time + 2 if self.grip &lt; self.GRIP_LIMIT else lap_time -
+            self.grip)</code></pre>
+</details>
+</dd>
+<dt id="app.simulation.tyre.Tyre.fuelEffect"><code class="name flex">
+<span>def <span class="ident">fuelEffect</span></span>(<span>self, initial_fuel, current_fuel)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Determine the effect that fuel is having on the car</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>current_fuel</code></strong> :&ensp;<code>float</code></dt>
+<dd>The current fuel onboard</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>(float)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def fuelEffect(self, initial_fuel, current_fuel):
+    &#39;&#39;&#39;
+        Determine the effect that fuel is having on the car
+
+        Args:
+            current_fuel (float): The current fuel onboard
+
+        Returns:
+            (float)
+    &#39;&#39;&#39;
+    return (current_fuel / (6 * initial_fuel)) + 0.83</code></pre>
+</details>
+</dd>
+<dt id="app.simulation.tyre.Tyre.reset"><code class="name flex">
+<span>def <span class="ident">reset</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Resets the tyre to its initial state</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def reset(self):
+    &#39;&#39;&#39;
+        Resets the tyre to its initial state
+    &#39;&#39;&#39;
+    self.grip = self.initial_grip
+    self.deg = self.initial_deg</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="app.simulation" href="index.html">app.simulation</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="app.simulation.tyre.Tyre" href="#app.simulation.tyre.Tyre">Tyre</a></code></h4>
+<ul class="two-column">
+<li><code><a title="app.simulation.tyre.Tyre.GRIP_LIMIT" href="#app.simulation.tyre.Tyre.GRIP_LIMIT">GRIP_LIMIT</a></code></li>
+<li><code><a title="app.simulation.tyre.Tyre.addLap" href="#app.simulation.tyre.Tyre.addLap">addLap</a></code></li>
+<li><code><a title="app.simulation.tyre.Tyre.allTyres" href="#app.simulation.tyre.Tyre.allTyres">allTyres</a></code></li>
+<li><code><a title="app.simulation.tyre.Tyre.calculateLapTime" href="#app.simulation.tyre.Tyre.calculateLapTime">calculateLapTime</a></code></li>
+<li><code><a title="app.simulation.tyre.Tyre.fuelEffect" href="#app.simulation.tyre.Tyre.fuelEffect">fuelEffect</a></code></li>
+<li><code><a title="app.simulation.tyre.Tyre.hardTyre" href="#app.simulation.tyre.Tyre.hardTyre">hardTyre</a></code></li>
+<li><code><a title="app.simulation.tyre.Tyre.mediumTyre" href="#app.simulation.tyre.Tyre.mediumTyre">mediumTyre</a></code></li>
+<li><code><a title="app.simulation.tyre.Tyre.reset" href="#app.simulation.tyre.Tyre.reset">reset</a></code></li>
+<li><code><a title="app.simulation.tyre.Tyre.softTyre" href="#app.simulation.tyre.Tyre.softTyre">softTyre</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

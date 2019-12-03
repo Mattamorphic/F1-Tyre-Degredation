@@ -1,0 +1,872 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.1" />
+<title>app.algorithm.strategy_deap API documentation</title>
+<meta name="description" content="Genetic Evolution …" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>app.algorithm.strategy_deap</code></h1>
+</header>
+<section id="section-intro">
+<p>Genetic Evolution</p>
+<h2 id="author">Author</h2>
+<p>Matthew Barber <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#109;&#102;&#109;&#98;&#97;&#114;&#98;&#101;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#109;&#102;&#109;&#98;&#97;&#114;&#98;&#101;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#39;&#39;&#39;
+    Genetic Evolution
+
+    Author:
+        Matthew Barber &lt;mfmbarber@gmail.com&gt;
+&#39;&#39;&#39;
+import random
+from app.render import Loader, Progress
+from deap import base, creator, tools
+
+
+class StrategyDeap:
+    &#39;&#39;&#39;
+        Used for Analysing cars with a Genetic Algoritm
+
+        Args:
+            car                (Car):   The initial car to base our calculations on
+            with_initial_tyre (bool):   Option to include the initial tyre in the calculations
+            generations        (int):   The generations to test against
+            population         (int):   The population to use for evolution
+    &#39;&#39;&#39;
+    # constants that define the likely hood of two individuals having crossover
+    # performed and the probability that a child will be mutated
+    CXPB = 0.5
+    MUTPB = 0.2
+
+    def __init__(self,
+                 car,
+                 with_initial_tyre,
+                 generations,
+                 population_size=300):
+        self.car = car
+        self.class_name = car.__class__
+        self.generations = generations
+        self.population_size = population_size
+        self.with_initial_tyre = with_initial_tyre
+
+    @staticmethod
+    def evaluate(individual):
+        &#39;&#39;&#39;
+            Args:
+                individual (car): The car that we are evaluating the fitness of
+        &#39;&#39;&#39;
+        return individual.simulateRace(),
+
+    def init(self, class_name):
+        &#39;&#39;&#39;
+            Returns an individual in our population
+
+            Args:
+                class_name  (str): The name of the class of individual
+
+            Returns:
+                class_name
+        &#39;&#39;&#39;
+        car = class_name(self.car.track, self.car.initial_tyre,
+                         self.car.pit_laps, self.car.pit_tyres,
+                         self.car.lap_time_factor, self.car.grip_loss_factor,
+                         self.car.team, self.car.colour)
+        car.move(self.with_initial_tyre)
+        return car
+
+    @staticmethod
+    def crossover(ind1, ind2):
+        &#39;&#39;&#39;
+            Crossover the two individuals and return new individuals
+
+            Args:
+                ind1 (Car): Parent 1
+                ind2 (Car): Parent 2
+
+            Returns:
+                Tuple
+        &#39;&#39;&#39;
+        child1 = ind1.__class__(ind1.track, ind1.initial_tyre, [], [])
+        child2 = ind2.__class__(ind2.track, ind2.initial_tyre, [], [])
+        child1.pit_laps = ind1.pit_laps
+        child1.pit_tyres = ind2.pit_tyres
+        child2.pit_laps = ind2.pit_laps
+        child2.pit_tyres = ind1.pit_tyres
+        return (child1, child2)
+
+    @staticmethod
+    def mutate(ind, indpb):
+        &#39;&#39;&#39;
+            Decide whether to mutate an individual
+
+            Args:
+                ind     (Car):      The individual
+                indpb   (float):    Probability of mutation
+        &#39;&#39;&#39;
+        if random.random() &lt; indpb:
+            ind.move()
+
+    def getReferenceStrings(self):
+        &#39;&#39;&#39;
+            As the deap creator attaches references to the global
+            we need to make sure that the individual and fitness we use is unique
+
+            Returns:
+                Tuple
+        &#39;&#39;&#39;
+        id = f&#34;{self.car.team}_{random.randint(0, 99999)}&#34;
+        while id in globals():
+            id = f&#34;{self.car.team}_{random.randint(0, 99999)}&#34;
+        globals()[id] = True
+        return (f&#34;{id}_pop&#34;, f&#34;{id}_ind&#34;, f&#34;{id}_fit&#34;)
+
+    def buildToolbox(self, pop_id, ind_id, fit_id):
+        &#39;&#39;&#39;
+            Create a new fitness class in the creator
+            Create a new car class in the creator (an individual)
+            Generate a toolbox and register the behaviour
+
+            Args:
+                pop_id (str): A unique name for the population
+                ind_id (str): A unique name for the individual
+                fit_id (str): A unique name for the fitness
+
+            Returns:
+                deap.base.toolbox
+        &#39;&#39;&#39;
+        creator.create(fit_id, base.Fitness, weights=(-1.0, ))
+        creator.create(ind_id,
+                       self.car.__class__,
+                       fitness=getattr(creator, fit_id))
+        toolbox = base.Toolbox()
+        toolbox.register(&#34;individual&#34;, self.init, getattr(creator, ind_id))
+        toolbox.register(&#34;population&#34;, tools.initRepeat, list,
+                         toolbox.individual)
+        toolbox.register(&#34;evaluate&#34;, StrategyDeap.evaluate)
+        toolbox.register(&#34;mate&#34;, StrategyDeap.crossover)
+        toolbox.register(&#34;mutate&#34;, StrategyDeap.mutate, indpb=0.05)
+        toolbox.register(&#34;select&#34;, tools.selTournament, tournsize=3)
+        return toolbox
+
+    def run(self):
+        &#39;&#39;&#39;
+            Runs the genetic algorithm simulation
+
+            Returns:
+                Car (individual)
+        &#39;&#39;&#39;
+        toolbox = self.buildToolbox(*self.getReferenceStrings())
+        population = toolbox.population(n=self.population_size)
+        # Calculate the fitnesses for the population and attach these to the
+        # individuals
+        fitnesses = list(map(toolbox.evaluate, population))
+        for ind, fit in zip(population, fitnesses):
+            ind.fitness.values = fit
+
+        fits = [ind.fitness.values[0] for ind in population]
+
+        print(
+            f&#34;Running simulation for {self.car.team} on {len(self.car.pit_laps)} stop strategy based on {self.generations} generations&#34;
+        )
+
+        # Create a progress object to allow us to print on a separate thread
+        progress = Progress(0, self.generations)
+        # Use a custom loader and run this code in the context of this
+        with Loader(0.2, progress):
+            for generation in range(self.generations):
+                progress.update(generation)
+                # select the fittest parents for the next generation
+                parents = toolbox.select(population, len(population))
+
+                # take a full copy of the parents as we will use these instances to perform our crossover
+                # and mutations
+                offspring = list(map(toolbox.clone, parents))
+
+                # choose the crossovers at random
+                for child1, child2 in zip(offspring[::2], offspring[1::2]):
+                    # test to see if we will do a crossover between two parents
+                    if random.random() &lt; self.CXPB:
+                        # do the crossover and delete the fitness values as they refer to the parent fitness
+                        # and not the children
+                        toolbox.mate(child1, child2)
+                        del child1.fitness.values
+                        del child2.fitness.values
+
+                # for each child in the offspring see if we will mutate it
+                for mutant in offspring:
+                    if random.random() &lt; self.MUTPB:
+                        toolbox.mutate(mutant)
+                        del mutant.fitness.values
+
+                # go through each child in the offspring. if they have an invalid fitness then reevaluate
+                # their fitness
+                for individual in offspring:
+                    if not individual.fitness.valid:
+                        individual.fitness.values = toolbox.evaluate(
+                            individual)
+
+                # replace the population with the offspring
+                population[:] = offspring
+
+                # print out some stats about fitness of the population
+                fits = []
+                strongest_ind = population[0]
+                for ind in population:
+                    fitness = ind.fitness.values[0]
+                    fits.append(fitness)
+                    if fitness &lt; strongest_ind.fitness.values[0]:
+                        strongest_ind = ind
+                length = len(population)
+                mean = sum(fits) / length
+                sum2 = sum(x * x for x in fits)
+                std = abs(sum2 / length - mean**2)**0.5
+                progress.additionalData(
+                    f&#34;Generation: {generation}&#34;,
+                    f&#34;Min: {min(fits)}&#34;,
+                    f&#34;Max: {max(fits)}&#34;,
+                    f&#34;Avg: {mean}&#34;,
+                    f&#34;Std: {std}&#34;,
+                )
+
+        print(
+            f&#34;Team: {strongest_ind.team}, &#34;,
+            f&#34;Pit Laps: {strongest_ind.pit_laps},&#34;,
+            f&#34;Pit Tyres: {&#39;, &#39;.join([tyre.type for tyre in strongest_ind.pit_tyres])},&#34;,
+            f&#34;Racetime: {strongest_ind.fitness.values[0]}&#34;)
+        return strongest_ind</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="app.algorithm.strategy_deap.StrategyDeap"><code class="flex name class">
+<span>class <span class="ident">StrategyDeap</span></span>
+<span>(</span><span>car, with_initial_tyre, generations, population_size=300)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Used for Analysing cars with a Genetic Algoritm</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt>car
+(Car):
+The initial car to base our calculations on</dt>
+<dt><strong><code>with_initial_tyre</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Option to include the initial tyre in the calculations</dd>
+</dl>
+<p>generations
+(int):
+The generations to test against
+population
+(int):
+The population to use for evolution</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class StrategyDeap:
+    &#39;&#39;&#39;
+        Used for Analysing cars with a Genetic Algoritm
+
+        Args:
+            car                (Car):   The initial car to base our calculations on
+            with_initial_tyre (bool):   Option to include the initial tyre in the calculations
+            generations        (int):   The generations to test against
+            population         (int):   The population to use for evolution
+    &#39;&#39;&#39;
+    # constants that define the likely hood of two individuals having crossover
+    # performed and the probability that a child will be mutated
+    CXPB = 0.5
+    MUTPB = 0.2
+
+    def __init__(self,
+                 car,
+                 with_initial_tyre,
+                 generations,
+                 population_size=300):
+        self.car = car
+        self.class_name = car.__class__
+        self.generations = generations
+        self.population_size = population_size
+        self.with_initial_tyre = with_initial_tyre
+
+    @staticmethod
+    def evaluate(individual):
+        &#39;&#39;&#39;
+            Args:
+                individual (car): The car that we are evaluating the fitness of
+        &#39;&#39;&#39;
+        return individual.simulateRace(),
+
+    def init(self, class_name):
+        &#39;&#39;&#39;
+            Returns an individual in our population
+
+            Args:
+                class_name  (str): The name of the class of individual
+
+            Returns:
+                class_name
+        &#39;&#39;&#39;
+        car = class_name(self.car.track, self.car.initial_tyre,
+                         self.car.pit_laps, self.car.pit_tyres,
+                         self.car.lap_time_factor, self.car.grip_loss_factor,
+                         self.car.team, self.car.colour)
+        car.move(self.with_initial_tyre)
+        return car
+
+    @staticmethod
+    def crossover(ind1, ind2):
+        &#39;&#39;&#39;
+            Crossover the two individuals and return new individuals
+
+            Args:
+                ind1 (Car): Parent 1
+                ind2 (Car): Parent 2
+
+            Returns:
+                Tuple
+        &#39;&#39;&#39;
+        child1 = ind1.__class__(ind1.track, ind1.initial_tyre, [], [])
+        child2 = ind2.__class__(ind2.track, ind2.initial_tyre, [], [])
+        child1.pit_laps = ind1.pit_laps
+        child1.pit_tyres = ind2.pit_tyres
+        child2.pit_laps = ind2.pit_laps
+        child2.pit_tyres = ind1.pit_tyres
+        return (child1, child2)
+
+    @staticmethod
+    def mutate(ind, indpb):
+        &#39;&#39;&#39;
+            Decide whether to mutate an individual
+
+            Args:
+                ind     (Car):      The individual
+                indpb   (float):    Probability of mutation
+        &#39;&#39;&#39;
+        if random.random() &lt; indpb:
+            ind.move()
+
+    def getReferenceStrings(self):
+        &#39;&#39;&#39;
+            As the deap creator attaches references to the global
+            we need to make sure that the individual and fitness we use is unique
+
+            Returns:
+                Tuple
+        &#39;&#39;&#39;
+        id = f&#34;{self.car.team}_{random.randint(0, 99999)}&#34;
+        while id in globals():
+            id = f&#34;{self.car.team}_{random.randint(0, 99999)}&#34;
+        globals()[id] = True
+        return (f&#34;{id}_pop&#34;, f&#34;{id}_ind&#34;, f&#34;{id}_fit&#34;)
+
+    def buildToolbox(self, pop_id, ind_id, fit_id):
+        &#39;&#39;&#39;
+            Create a new fitness class in the creator
+            Create a new car class in the creator (an individual)
+            Generate a toolbox and register the behaviour
+
+            Args:
+                pop_id (str): A unique name for the population
+                ind_id (str): A unique name for the individual
+                fit_id (str): A unique name for the fitness
+
+            Returns:
+                deap.base.toolbox
+        &#39;&#39;&#39;
+        creator.create(fit_id, base.Fitness, weights=(-1.0, ))
+        creator.create(ind_id,
+                       self.car.__class__,
+                       fitness=getattr(creator, fit_id))
+        toolbox = base.Toolbox()
+        toolbox.register(&#34;individual&#34;, self.init, getattr(creator, ind_id))
+        toolbox.register(&#34;population&#34;, tools.initRepeat, list,
+                         toolbox.individual)
+        toolbox.register(&#34;evaluate&#34;, StrategyDeap.evaluate)
+        toolbox.register(&#34;mate&#34;, StrategyDeap.crossover)
+        toolbox.register(&#34;mutate&#34;, StrategyDeap.mutate, indpb=0.05)
+        toolbox.register(&#34;select&#34;, tools.selTournament, tournsize=3)
+        return toolbox
+
+    def run(self):
+        &#39;&#39;&#39;
+            Runs the genetic algorithm simulation
+
+            Returns:
+                Car (individual)
+        &#39;&#39;&#39;
+        toolbox = self.buildToolbox(*self.getReferenceStrings())
+        population = toolbox.population(n=self.population_size)
+        # Calculate the fitnesses for the population and attach these to the
+        # individuals
+        fitnesses = list(map(toolbox.evaluate, population))
+        for ind, fit in zip(population, fitnesses):
+            ind.fitness.values = fit
+
+        fits = [ind.fitness.values[0] for ind in population]
+
+        print(
+            f&#34;Running simulation for {self.car.team} on {len(self.car.pit_laps)} stop strategy based on {self.generations} generations&#34;
+        )
+
+        # Create a progress object to allow us to print on a separate thread
+        progress = Progress(0, self.generations)
+        # Use a custom loader and run this code in the context of this
+        with Loader(0.2, progress):
+            for generation in range(self.generations):
+                progress.update(generation)
+                # select the fittest parents for the next generation
+                parents = toolbox.select(population, len(population))
+
+                # take a full copy of the parents as we will use these instances to perform our crossover
+                # and mutations
+                offspring = list(map(toolbox.clone, parents))
+
+                # choose the crossovers at random
+                for child1, child2 in zip(offspring[::2], offspring[1::2]):
+                    # test to see if we will do a crossover between two parents
+                    if random.random() &lt; self.CXPB:
+                        # do the crossover and delete the fitness values as they refer to the parent fitness
+                        # and not the children
+                        toolbox.mate(child1, child2)
+                        del child1.fitness.values
+                        del child2.fitness.values
+
+                # for each child in the offspring see if we will mutate it
+                for mutant in offspring:
+                    if random.random() &lt; self.MUTPB:
+                        toolbox.mutate(mutant)
+                        del mutant.fitness.values
+
+                # go through each child in the offspring. if they have an invalid fitness then reevaluate
+                # their fitness
+                for individual in offspring:
+                    if not individual.fitness.valid:
+                        individual.fitness.values = toolbox.evaluate(
+                            individual)
+
+                # replace the population with the offspring
+                population[:] = offspring
+
+                # print out some stats about fitness of the population
+                fits = []
+                strongest_ind = population[0]
+                for ind in population:
+                    fitness = ind.fitness.values[0]
+                    fits.append(fitness)
+                    if fitness &lt; strongest_ind.fitness.values[0]:
+                        strongest_ind = ind
+                length = len(population)
+                mean = sum(fits) / length
+                sum2 = sum(x * x for x in fits)
+                std = abs(sum2 / length - mean**2)**0.5
+                progress.additionalData(
+                    f&#34;Generation: {generation}&#34;,
+                    f&#34;Min: {min(fits)}&#34;,
+                    f&#34;Max: {max(fits)}&#34;,
+                    f&#34;Avg: {mean}&#34;,
+                    f&#34;Std: {std}&#34;,
+                )
+
+        print(
+            f&#34;Team: {strongest_ind.team}, &#34;,
+            f&#34;Pit Laps: {strongest_ind.pit_laps},&#34;,
+            f&#34;Pit Tyres: {&#39;, &#39;.join([tyre.type for tyre in strongest_ind.pit_tyres])},&#34;,
+            f&#34;Racetime: {strongest_ind.fitness.values[0]}&#34;)
+        return strongest_ind</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="app.algorithm.strategy_deap.StrategyDeap.CXPB"><code class="name">var <span class="ident">CXPB</span></code></dt>
+<dd>
+<section class="desc"><p>Convert a string or number to a floating point number, if possible.</p></section>
+</dd>
+<dt id="app.algorithm.strategy_deap.StrategyDeap.MUTPB"><code class="name">var <span class="ident">MUTPB</span></code></dt>
+<dd>
+<section class="desc"><p>Convert a string or number to a floating point number, if possible.</p></section>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="app.algorithm.strategy_deap.StrategyDeap.crossover"><code class="name flex">
+<span>def <span class="ident">crossover</span></span>(<span>ind1, ind2)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Crossover the two individuals and return new individuals</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>ind1</code></strong> :&ensp;<code>Car</code></dt>
+<dd>Parent 1</dd>
+<dt><strong><code>ind2</code></strong> :&ensp;<code>Car</code></dt>
+<dd>Parent 2</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Tuple</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def crossover(ind1, ind2):
+    &#39;&#39;&#39;
+        Crossover the two individuals and return new individuals
+
+        Args:
+            ind1 (Car): Parent 1
+            ind2 (Car): Parent 2
+
+        Returns:
+            Tuple
+    &#39;&#39;&#39;
+    child1 = ind1.__class__(ind1.track, ind1.initial_tyre, [], [])
+    child2 = ind2.__class__(ind2.track, ind2.initial_tyre, [], [])
+    child1.pit_laps = ind1.pit_laps
+    child1.pit_tyres = ind2.pit_tyres
+    child2.pit_laps = ind2.pit_laps
+    child2.pit_tyres = ind1.pit_tyres
+    return (child1, child2)</code></pre>
+</details>
+</dd>
+<dt id="app.algorithm.strategy_deap.StrategyDeap.evaluate"><code class="name flex">
+<span>def <span class="ident">evaluate</span></span>(<span>individual)</span>
+</code></dt>
+<dd>
+<section class="desc"><h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>individual</code></strong> :&ensp;<code>car</code></dt>
+<dd>The car that we are evaluating the fitness of</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def evaluate(individual):
+    &#39;&#39;&#39;
+        Args:
+            individual (car): The car that we are evaluating the fitness of
+    &#39;&#39;&#39;
+    return individual.simulateRace(),</code></pre>
+</details>
+</dd>
+<dt id="app.algorithm.strategy_deap.StrategyDeap.mutate"><code class="name flex">
+<span>def <span class="ident">mutate</span></span>(<span>ind, indpb)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Decide whether to mutate an individual</p>
+<h2 id="args">Args</h2>
+<p>ind
+(Car):
+The individual
+indpb
+(float):
+Probability of mutation</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def mutate(ind, indpb):
+    &#39;&#39;&#39;
+        Decide whether to mutate an individual
+
+        Args:
+            ind     (Car):      The individual
+            indpb   (float):    Probability of mutation
+    &#39;&#39;&#39;
+    if random.random() &lt; indpb:
+        ind.move()</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="app.algorithm.strategy_deap.StrategyDeap.buildToolbox"><code class="name flex">
+<span>def <span class="ident">buildToolbox</span></span>(<span>self, pop_id, ind_id, fit_id)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Create a new fitness class in the creator
+Create a new car class in the creator (an individual)
+Generate a toolbox and register the behaviour</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>pop_id</code></strong> :&ensp;<code>str</code></dt>
+<dd>A unique name for the population</dd>
+<dt><strong><code>ind_id</code></strong> :&ensp;<code>str</code></dt>
+<dd>A unique name for the individual</dd>
+<dt><strong><code>fit_id</code></strong> :&ensp;<code>str</code></dt>
+<dd>A unique name for the fitness</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>deap.base.toolbox</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def buildToolbox(self, pop_id, ind_id, fit_id):
+    &#39;&#39;&#39;
+        Create a new fitness class in the creator
+        Create a new car class in the creator (an individual)
+        Generate a toolbox and register the behaviour
+
+        Args:
+            pop_id (str): A unique name for the population
+            ind_id (str): A unique name for the individual
+            fit_id (str): A unique name for the fitness
+
+        Returns:
+            deap.base.toolbox
+    &#39;&#39;&#39;
+    creator.create(fit_id, base.Fitness, weights=(-1.0, ))
+    creator.create(ind_id,
+                   self.car.__class__,
+                   fitness=getattr(creator, fit_id))
+    toolbox = base.Toolbox()
+    toolbox.register(&#34;individual&#34;, self.init, getattr(creator, ind_id))
+    toolbox.register(&#34;population&#34;, tools.initRepeat, list,
+                     toolbox.individual)
+    toolbox.register(&#34;evaluate&#34;, StrategyDeap.evaluate)
+    toolbox.register(&#34;mate&#34;, StrategyDeap.crossover)
+    toolbox.register(&#34;mutate&#34;, StrategyDeap.mutate, indpb=0.05)
+    toolbox.register(&#34;select&#34;, tools.selTournament, tournsize=3)
+    return toolbox</code></pre>
+</details>
+</dd>
+<dt id="app.algorithm.strategy_deap.StrategyDeap.getReferenceStrings"><code class="name flex">
+<span>def <span class="ident">getReferenceStrings</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>As the deap creator attaches references to the global
+we need to make sure that the individual and fitness we use is unique</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Tuple</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getReferenceStrings(self):
+    &#39;&#39;&#39;
+        As the deap creator attaches references to the global
+        we need to make sure that the individual and fitness we use is unique
+
+        Returns:
+            Tuple
+    &#39;&#39;&#39;
+    id = f&#34;{self.car.team}_{random.randint(0, 99999)}&#34;
+    while id in globals():
+        id = f&#34;{self.car.team}_{random.randint(0, 99999)}&#34;
+    globals()[id] = True
+    return (f&#34;{id}_pop&#34;, f&#34;{id}_ind&#34;, f&#34;{id}_fit&#34;)</code></pre>
+</details>
+</dd>
+<dt id="app.algorithm.strategy_deap.StrategyDeap.init"><code class="name flex">
+<span>def <span class="ident">init</span></span>(<span>self, class_name)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Returns an individual in our population</p>
+<h2 id="args">Args</h2>
+<p>class_name
+(str): The name of the class of individual</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>class_name</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def init(self, class_name):
+    &#39;&#39;&#39;
+        Returns an individual in our population
+
+        Args:
+            class_name  (str): The name of the class of individual
+
+        Returns:
+            class_name
+    &#39;&#39;&#39;
+    car = class_name(self.car.track, self.car.initial_tyre,
+                     self.car.pit_laps, self.car.pit_tyres,
+                     self.car.lap_time_factor, self.car.grip_loss_factor,
+                     self.car.team, self.car.colour)
+    car.move(self.with_initial_tyre)
+    return car</code></pre>
+</details>
+</dd>
+<dt id="app.algorithm.strategy_deap.StrategyDeap.run"><code class="name flex">
+<span>def <span class="ident">run</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Runs the genetic algorithm simulation</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Car</code> (<code>individual</code>)</dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def run(self):
+    &#39;&#39;&#39;
+        Runs the genetic algorithm simulation
+
+        Returns:
+            Car (individual)
+    &#39;&#39;&#39;
+    toolbox = self.buildToolbox(*self.getReferenceStrings())
+    population = toolbox.population(n=self.population_size)
+    # Calculate the fitnesses for the population and attach these to the
+    # individuals
+    fitnesses = list(map(toolbox.evaluate, population))
+    for ind, fit in zip(population, fitnesses):
+        ind.fitness.values = fit
+
+    fits = [ind.fitness.values[0] for ind in population]
+
+    print(
+        f&#34;Running simulation for {self.car.team} on {len(self.car.pit_laps)} stop strategy based on {self.generations} generations&#34;
+    )
+
+    # Create a progress object to allow us to print on a separate thread
+    progress = Progress(0, self.generations)
+    # Use a custom loader and run this code in the context of this
+    with Loader(0.2, progress):
+        for generation in range(self.generations):
+            progress.update(generation)
+            # select the fittest parents for the next generation
+            parents = toolbox.select(population, len(population))
+
+            # take a full copy of the parents as we will use these instances to perform our crossover
+            # and mutations
+            offspring = list(map(toolbox.clone, parents))
+
+            # choose the crossovers at random
+            for child1, child2 in zip(offspring[::2], offspring[1::2]):
+                # test to see if we will do a crossover between two parents
+                if random.random() &lt; self.CXPB:
+                    # do the crossover and delete the fitness values as they refer to the parent fitness
+                    # and not the children
+                    toolbox.mate(child1, child2)
+                    del child1.fitness.values
+                    del child2.fitness.values
+
+            # for each child in the offspring see if we will mutate it
+            for mutant in offspring:
+                if random.random() &lt; self.MUTPB:
+                    toolbox.mutate(mutant)
+                    del mutant.fitness.values
+
+            # go through each child in the offspring. if they have an invalid fitness then reevaluate
+            # their fitness
+            for individual in offspring:
+                if not individual.fitness.valid:
+                    individual.fitness.values = toolbox.evaluate(
+                        individual)
+
+            # replace the population with the offspring
+            population[:] = offspring
+
+            # print out some stats about fitness of the population
+            fits = []
+            strongest_ind = population[0]
+            for ind in population:
+                fitness = ind.fitness.values[0]
+                fits.append(fitness)
+                if fitness &lt; strongest_ind.fitness.values[0]:
+                    strongest_ind = ind
+            length = len(population)
+            mean = sum(fits) / length
+            sum2 = sum(x * x for x in fits)
+            std = abs(sum2 / length - mean**2)**0.5
+            progress.additionalData(
+                f&#34;Generation: {generation}&#34;,
+                f&#34;Min: {min(fits)}&#34;,
+                f&#34;Max: {max(fits)}&#34;,
+                f&#34;Avg: {mean}&#34;,
+                f&#34;Std: {std}&#34;,
+            )
+
+    print(
+        f&#34;Team: {strongest_ind.team}, &#34;,
+        f&#34;Pit Laps: {strongest_ind.pit_laps},&#34;,
+        f&#34;Pit Tyres: {&#39;, &#39;.join([tyre.type for tyre in strongest_ind.pit_tyres])},&#34;,
+        f&#34;Racetime: {strongest_ind.fitness.values[0]}&#34;)
+    return strongest_ind</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="app.algorithm" href="index.html">app.algorithm</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="app.algorithm.strategy_deap.StrategyDeap" href="#app.algorithm.strategy_deap.StrategyDeap">StrategyDeap</a></code></h4>
+<ul class="two-column">
+<li><code><a title="app.algorithm.strategy_deap.StrategyDeap.CXPB" href="#app.algorithm.strategy_deap.StrategyDeap.CXPB">CXPB</a></code></li>
+<li><code><a title="app.algorithm.strategy_deap.StrategyDeap.MUTPB" href="#app.algorithm.strategy_deap.StrategyDeap.MUTPB">MUTPB</a></code></li>
+<li><code><a title="app.algorithm.strategy_deap.StrategyDeap.buildToolbox" href="#app.algorithm.strategy_deap.StrategyDeap.buildToolbox">buildToolbox</a></code></li>
+<li><code><a title="app.algorithm.strategy_deap.StrategyDeap.crossover" href="#app.algorithm.strategy_deap.StrategyDeap.crossover">crossover</a></code></li>
+<li><code><a title="app.algorithm.strategy_deap.StrategyDeap.evaluate" href="#app.algorithm.strategy_deap.StrategyDeap.evaluate">evaluate</a></code></li>
+<li><code><a title="app.algorithm.strategy_deap.StrategyDeap.getReferenceStrings" href="#app.algorithm.strategy_deap.StrategyDeap.getReferenceStrings">getReferenceStrings</a></code></li>
+<li><code><a title="app.algorithm.strategy_deap.StrategyDeap.init" href="#app.algorithm.strategy_deap.StrategyDeap.init">init</a></code></li>
+<li><code><a title="app.algorithm.strategy_deap.StrategyDeap.mutate" href="#app.algorithm.strategy_deap.StrategyDeap.mutate">mutate</a></code></li>
+<li><code><a title="app.algorithm.strategy_deap.StrategyDeap.run" href="#app.algorithm.strategy_deap.StrategyDeap.run">run</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

@@ -7,7 +7,7 @@ The first graphs created are those which test the underlying simulation by runni
 
 The graphs created as 2. and 3. provide samples of the simulations being run through the simulated annealing and genetic evolution strategies as a proof of concept, these take a test team and run these on comparative strategies.
 
-4. Onwards deals with providing a number of scenarios and calculating the mapping the results of these to plots. Each scenario is passed through both simulated annealing and genetic evolution.
+4 Onwards deals with providing a number of scenarios and calculating the mapping the results of these to plots. Each scenario is passed through both simulated annealing and genetic evolution.
 
 
 ## Running the simulation
@@ -15,6 +15,9 @@ The graphs created as 2. and 3. provide samples of the simulations being run thr
 ```
 python3 pit_strategy.py
 ```
+
+## Code Documentation 
+`pdoc3` has been used to generate the documentation on from the comments, and the API for this.
 
 ## Architecture
 The project has been broken down into distinct modules and classes.
@@ -27,7 +30,6 @@ This is the entry point for the calculations and uses the custom modules and cla
 The simulation itself lives in the `app.simulation` module and is composed of three underlying classes namely, `car`, `track`, and `tyre`.
 
 #### Car
-
 The Car class represents an F1 car and is instantiated either directly with a Track, initial Tyre, a list of integers representing pit laps, and a list of Tyres that correspond with those pit laps, or through a static helper method such as `mercedes`, `ferrari`, or `redbull` which pre-populate some other the optional parameters and return a Car object.
 
 These optional parameters are available at instantiation and allow you to configure the cars speed through the lap time factor, and how hard they run the tyres through the grip loss factor, as well as provide a team name and plot colour.
@@ -35,7 +37,6 @@ These optional parameters are available at instantiation and allow you to config
 By using dependency injection for the Track and Tyres these can be abstracted out and tested independently. Mock objects can also be patched in.
 
 #### Track
-
 The Track class represents an F1 track that we are going to both simulate the race using, and provides context such as the race laps, the fuel required, the consumption per lap, the average lap time and the duration of a pitstop.
 
 This can be instantiated directly or again through static methods. In the case of the above simulation the sampleTrack method provides the foundation for the calculations, however there is also a model of monaco available to use.
@@ -43,7 +44,6 @@ This can be instantiated directly or again through static methods. In the case o
 By creating this class and injecting this into the Car class this can be swapped out for other instances.
 
 #### Tyre
-
 The Tyre class represents an F1 cars tyre and is instantiated either directly with the type of the tyre, the initial grip, the initial degredation, the switch point (the point at which the tyre goes off), and the switch deg (the degredation factor to apply when the tyre goes off)
 
 The logic for simulating tyre wear is handled here, the addLap method applies the wear of the tyre after the given lap providing the compound event, and updating the object attributes accordingly. The calculateLapTime method provides us with the timing based on the state of the current tyre, the average lap time, and current fuel on board.
@@ -54,9 +54,7 @@ There are a number of static methods available on the Tyre class that allow us t
 ### Algorithm `app.algorithm`
 The algorithms that are run to calculate the strategy live in the `app.algorithm` module and is composed of the algorithms themselves (through approved libraries), as well as a factory for creating these
 
-
 #### CalculateStrategyWith
-
 This class acts as a factory (not quite - but close enough), with 2 static methods - one that uses simulated annealing, and one that uses genetic evolution, these both take equivalent parameters and return the same type of object, a Car.
 
 #### StrategyAnnealer
