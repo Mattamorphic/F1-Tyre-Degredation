@@ -18,9 +18,10 @@ python3 pit_strategy.py
 
 ## Architecture
 The project has been broken down into distinct modules and classes.
+Code formatting / linting follows both flake8 and [Google](https://github.com/google/yapf) coding standards
 
 ### pit_strategy
-This is the entry point for the calculations and uses the custom modules and classes to calculate the optimal strategy. 
+This is the entry point for the calculations and uses the custom modules and classes to calculate the optimal strategy.
 
 ### Simulation  `app.simulation`
 The simulation itself lives in the `app.simulation` module and is composed of three underlying classes namely, `car`, `track`, and `tyre`.

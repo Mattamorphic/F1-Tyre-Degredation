@@ -8,6 +8,7 @@
 import time
 from simanneal import Annealer
 
+
 class StrategyAnnealer(Annealer):
     '''
         Used for simulated annealing
@@ -16,7 +17,6 @@ class StrategyAnnealer(Annealer):
         Args:
             car (Car): The car object to run the annealer against
     '''
-
     def __init__(self, car):
         super(StrategyAnnealer, self).__init__(car)
         self.include_initial_tyre_in_move = False

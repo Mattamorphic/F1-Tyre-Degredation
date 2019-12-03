@@ -1,4 +1,11 @@
+'''
+    Tyre Class
+
+    Author:
+        Matthew Barber (mfmbarber@gmail.com)
+'''
 import random
+
 
 class Tyre:
     '''
@@ -13,7 +20,12 @@ class Tyre:
     '''
     GRIP_LIMIT = 0.3
 
-    def __init__(self, type, initial_grip, initial_deg, switch_point, switch_deg=1.25):
+    def __init__(self,
+                 type,
+                 initial_grip,
+                 initial_deg,
+                 switch_point,
+                 switch_deg=1.25):
         self.type = type
         self.grip = initial_grip
         self.initial_grip = initial_grip
@@ -31,12 +43,10 @@ class Tyre:
         '''
         if not isinstance(Tyre, type):
             raise ValueError('operands must be of type Tyre')
-        return (
-            self.initial_grip == tyre.initial_grip
-            and self.initial_deg == tyre.initial_deg
-            and self.switch_point == tyre.switch_point
-            and self.switch_deg == tyre.switch_deg
-        )
+        return (self.initial_grip == tyre.initial_grip
+                and self.initial_deg == tyre.initial_deg
+                and self.switch_point == tyre.switch_point
+                and self.switch_deg == tyre.switch_deg)
 
     def fuelEffect(self, initial_fuel, current_fuel):
         '''
@@ -67,10 +77,12 @@ class Tyre:
             return self.grip
         if self.grip < self.switch_point:
             self.deg = self.deg * self.switch_deg
-        self.grip -= (self.deg * self.fuelEffect(initial_fuel, current_fuel)) * grip_loss_factor
+        self.grip -= (self.deg * self.fuelEffect(
+            initial_fuel, current_fuel)) * grip_loss_factor
         return self.grip
 
-    def calculateLapTime(self, initial_fuel, current_fuel, base_lap_time, lap_time_factor):
+    def calculateLapTime(self, initial_fuel, current_fuel, base_lap_time,
+                         lap_time_factor):
         '''
             Calculates and returns the laptime based on the current fuel level and state of the tyre.
 
@@ -81,15 +93,11 @@ class Tyre:
             Returns:
                 float
         '''
-        lap_time = (
-            (base_lap_time * lap_time_factor)
-            - (100 - ((100 / initial_fuel) * current_fuel))
-            * (2 / initial_fuel)
-        )
-        return (
-            lap_time + 2 if self.grip < self.GRIP_LIMIT
-            else lap_time - self.grip
-        )
+        lap_time = ((base_lap_time * lap_time_factor) -
+                    (100 - ((100 / initial_fuel) * current_fuel)) *
+                    (2 / initial_fuel))
+        return (lap_time + 2 if self.grip < self.GRIP_LIMIT else lap_time -
+                self.grip)
 
     def reset(self):
         '''
@@ -106,12 +114,10 @@ class Tyre:
             Returns:
                 (Tyre)
         '''
-        return Tyre(
-            type='soft',
-            initial_grip=2.0,
-            initial_deg=0.03,
-            switch_point=1.8
-        )
+        return Tyre(type='soft',
+                    initial_grip=2.0,
+                    initial_deg=0.03,
+                    switch_point=1.8)
 
     @staticmethod
     def mediumTyre():
@@ -121,12 +127,10 @@ class Tyre:
             Returns:
                 (Tyre)
         '''
-        return Tyre(
-            type='medium',
-            initial_grip=1.5,
-            initial_deg=0.02,
-            switch_point=1.2
-        )
+        return Tyre(type='medium',
+                    initial_grip=1.5,
+                    initial_deg=0.02,
+                    switch_point=1.2)
 
     @staticmethod
     def hardTyre():
@@ -136,12 +140,10 @@ class Tyre:
             Returns:
                 (Tyre)
         '''
-        return Tyre(
-            type='hard',
-            initial_grip=1.0,
-            initial_deg=0.01,
-            switch_point=0.75
-        )
+        return Tyre(type='hard',
+                    initial_grip=1.0,
+                    initial_deg=0.01,
+                    switch_point=0.75)
 
     @staticmethod
     def allTyres():
@@ -151,8 +153,4 @@ class Tyre:
             Returns:
                 (Tyre[])
         '''
-        return [
-            Tyre.softTyre(),
-            Tyre.mediumTyre(),
-            Tyre.hardTyre()
-        ]
+        return [Tyre.softTyre(), Tyre.mediumTyre(), Tyre.hardTyre()]

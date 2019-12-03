@@ -7,10 +7,10 @@
 from .strategy_annealer import StrategyAnnealer
 from .strategy_deap import StrategyDeap
 
-class CalulateStrategyWith:
 
+class CalulateStrategyWith:
     @staticmethod
-    def Annealing(car, include_initial_tyre = False, iterations = 100000):
+    def Annealing(car, include_initial_tyre=False, iterations=100000):
         '''
             Use simulated annealing to determine the best strategy
 
@@ -29,7 +29,7 @@ class CalulateStrategyWith:
         return state
 
     @staticmethod
-    def geneticAlgorithm(car, include_initial_tyre = False, generations = 1000):
+    def geneticAlgorithm(car, include_initial_tyre=False, generations=1000):
         '''
             Use genetic evolution to determine the best strategy
 

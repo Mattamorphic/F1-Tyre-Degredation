@@ -9,6 +9,7 @@ import time
 import threading
 import subprocess
 
+
 class Loader:
     '''
         Worker thread to create a spinner in the terminal
@@ -31,7 +32,8 @@ class Loader:
                 (str)
         '''
         while 1:
-            for cursor in Loader.BARS: yield cursor
+            for cursor in Loader.BARS:
+                yield cursor
 
     def __init__(self, delay=None, progress=None):
         self.loadingGenerator = self.loadingCursor()
@@ -42,19 +44,18 @@ class Loader:
         '''
             The task to run in the thread
         '''
-        while self.isBusy: # Will execute until interrupted
+        while self.isBusy:  # Will execute until interrupted
             progress = self.progress if self.progress else ''
             print(f"{next(self.loadingGenerator)} {progress}")
             self.clearLine()
-
 
     def clearLine(self):
         '''
             Remove the last print, and reset the cursor
         '''
         time.sleep(self.delay)
-        sys.stdout.write("\033[F") #back to previous line
-        sys.stdout.write("\033[K") #clear line
+        sys.stdout.write("\033[F")  #back to previous line
+        sys.stdout.write("\033[K")  #clear line
         sys.stdout.flush()
 
     def __enter__(self):

@@ -21,23 +21,20 @@ class Car:
             lap_time_factor (float):    A lap time factor to model car speed
             grip_loss_factor(float):    A lap titme factor to model grip loss
     '''
-
     '''
         Immutable constants
     '''
     START_LAP_OFFSET = 5
 
-    def __init__(
-        self,
-        track,
-        initial_tyre,
-        pit_laps,
-        pit_tyres,
-        lap_time_factor=1.0,
-        grip_loss_factor=1.0,
-        team='team',
-        colour='blue'
-    ):
+    def __init__(self,
+                 track,
+                 initial_tyre,
+                 pit_laps,
+                 pit_tyres,
+                 lap_time_factor=1.0,
+                 grip_loss_factor=1.0,
+                 team='team',
+                 colour='blue'):
         self.track = track
         self.initial_tyre = initial_tyre
         self.pit_laps = pit_laps
@@ -72,13 +69,11 @@ class Car:
         # Create a set of unique values, and base this off the initial grip
         if len(set([tyre.initial_grip for tyre in compounds])) < 2:
             return False
-        return (
-            self.number_of_stops > 0
-            and len(self.pit_tyres) == len(self.pit_laps)
-            and self.pit_laps[0] > 1
-            and self.pit_laps[-1] < self.track.race_laps
-            and len(self.pit_laps) == len(set(self.pit_laps))
-        )
+        return (self.number_of_stops > 0
+                and len(self.pit_tyres) == len(self.pit_laps)
+                and self.pit_laps[0] > 1
+                and self.pit_laps[-1] < self.track.race_laps
+                and len(self.pit_laps) == len(set(self.pit_laps)))
 
     def resetCar(self):
         '''
@@ -106,12 +101,9 @@ class Car:
         racetime = self.START_LAP_OFFSET
         for lap_number in range(0, self.track.race_laps):
             # calculate lap time
-            lap_time = tyre.calculateLapTime(
-                self.track.initial_fuel,
-                fuel,
-                self.track.lap_time,
-                self.lap_time_factor
-            )
+            lap_time = tyre.calculateLapTime(self.track.initial_fuel, fuel,
+                                             self.track.lap_time,
+                                             self.lap_time_factor)
             # add wear to the tyre
             tyre.addLap(self.track.initial_fuel, fuel, self.grip_loss_factor)
             fuel -= self.track.fuel_consumption_per_lap
@@ -137,12 +129,8 @@ class Car:
         # Reset the car
         self.resetCar()
         # Run the race
-        return self.runRace(
-            self.track.initial_fuel,
-            self.initial_tyre,
-            self.pit_laps,
-            iter(self.pit_tyres)
-        )
+        return self.runRace(self.track.initial_fuel, self.initial_tyre,
+                            self.pit_laps, iter(self.pit_tyres))
 
     def energy(self):
         '''
@@ -170,7 +158,9 @@ class Car:
         if self.number_of_stops == 1:
             self.pit_tyres = [self.chooseRandomTyre()]
         else:
-            self.pit_tyres[random.randint(0, len(self.pit_laps)-1)] = self.chooseRandomTyre()
+            self.pit_tyres[random.randint(0,
+                                          len(self.pit_laps) -
+                                          1)] = self.chooseRandomTyre()
 
     def changeStartCompound(self):
         '''
@@ -186,10 +176,11 @@ class Car:
         pit_lap = -1
         laps = range(self.track.race_laps)
         while pit_lap not in laps:
-            pit_lap = self.pit_laps[pit_lap_index] + (1 if random.randint(0, variance) == 0 else -1)
+            pit_lap = self.pit_laps[pit_lap_index] + (1 if random.randint(
+                0, variance) == 0 else -1)
         self.pit_laps[pit_lap_index] = pit_lap
 
-    def move(self, withInitialTyre = False, variance = 1):
+    def move(self, withInitialTyre=False, variance=1):
         '''
             Used in simulated annealing determine whether to change a tyre compound or a lap number
         '''
@@ -217,16 +208,8 @@ class Car:
                 pit_laps        (list):     The pit laps
                 pit_tyres       (list):     The pit tyres
         '''
-        return Car(
-            track,
-            initial_tyre,
-            pit_laps,
-            pit_tyres,
-            0.987,
-            0.966,
-            'mercedes',
-            'green'
-        )
+        return Car(track, initial_tyre, pit_laps, pit_tyres, 0.987, 0.966,
+                   'mercedes', 'green')
 
     @staticmethod
     def ferrari(track, initial_tyre, pit_laps, pit_tyres):
@@ -239,16 +222,8 @@ class Car:
                 pit_laps        (list):     The pit laps
                 pit_tyres       (list):     The pit tyres
         '''
-        return Car(
-            track,
-            initial_tyre,
-            pit_laps,
-            pit_tyres,
-            0.99,
-            0.99,
-            'ferrari',
-            'red'
-        )
+        return Car(track, initial_tyre, pit_laps, pit_tyres, 0.99, 0.99,
+                   'ferrari', 'red')
 
     @staticmethod
     def redbull(track, initial_tyre, pit_laps, pit_tyres):
@@ -261,13 +236,5 @@ class Car:
                 pit_laps        (list):     The pit laps
                 pit_tyres       (list):     The pit tyres
         '''
-        return Car(
-            track,
-            initial_tyre,
-            pit_laps,
-            pit_tyres,
-            0.991,
-            0.982,
-            'redbull',
-            'blue'
-        )
+        return Car(track, initial_tyre, pit_laps, pit_tyres, 0.991, 0.982,
+                   'redbull', 'blue')

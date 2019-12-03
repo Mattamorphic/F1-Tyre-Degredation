@@ -8,6 +8,7 @@ import random
 from app.render import Loader, Progress
 from deap import base, creator, tools
 
+
 class StrategyDeap:
     '''
         Used for Analysing cars with a Genetic Algoritm
@@ -23,13 +24,11 @@ class StrategyDeap:
     CXPB = 0.5
     MUTPB = 0.2
 
-    def __init__(
-        self,
-        car,
-        with_initial_tyre,
-        generations,
-        population_size = 300
-    ):
+    def __init__(self,
+                 car,
+                 with_initial_tyre,
+                 generations,
+                 population_size=300):
         self.car = car
         self.class_name = car.__class__
         self.generations = generations
@@ -54,16 +53,10 @@ class StrategyDeap:
             Returns:
                 class_name
         '''
-        car = class_name(
-            self.car.track,
-            self.car.initial_tyre,
-            self.car.pit_laps,
-            self.car.pit_tyres,
-            self.car.lap_time_factor,
-            self.car.grip_loss_factor,
-            self.car.team,
-            self.car.colour
-        )
+        car = class_name(self.car.track, self.car.initial_tyre,
+                         self.car.pit_laps, self.car.pit_tyres,
+                         self.car.lap_time_factor, self.car.grip_loss_factor,
+                         self.car.team, self.car.colour)
         car.move(self.with_initial_tyre)
         return car
 
@@ -111,12 +104,7 @@ class StrategyDeap:
         while id in globals():
             id = f"{self.car.team}_{random.randint(0, 99999)}"
         globals()[id] = True
-        return (
-            f"{id}_pop",
-            f"{id}_ind",
-            f"{id}_fit"
-        )
-
+        return (f"{id}_pop", f"{id}_ind", f"{id}_fit")
 
     def buildToolbox(self, pop_id, ind_id, fit_id):
         '''
@@ -132,11 +120,14 @@ class StrategyDeap:
             Returns:
                 deap.base.toolbox
         '''
-        creator.create(fit_id, base.Fitness, weights=(-1.0,))
-        creator.create(ind_id, self.car.__class__, fitness=getattr(creator, fit_id))
+        creator.create(fit_id, base.Fitness, weights=(-1.0, ))
+        creator.create(ind_id,
+                       self.car.__class__,
+                       fitness=getattr(creator, fit_id))
         toolbox = base.Toolbox()
         toolbox.register("individual", self.init, getattr(creator, ind_id))
-        toolbox.register("population", tools.initRepeat, list, toolbox.individual)
+        toolbox.register("population", tools.initRepeat, list,
+                         toolbox.individual)
         toolbox.register("evaluate", StrategyDeap.evaluate)
         toolbox.register("mate", StrategyDeap.crossover)
         toolbox.register("mutate", StrategyDeap.mutate, indpb=0.05)
@@ -160,7 +151,9 @@ class StrategyDeap:
 
         fits = [ind.fitness.values[0] for ind in population]
 
-        print(f"Running simulation for {self.car.team} on {len(self.car.pit_laps)} stop strategy based on {self.generations} generations")
+        print(
+            f"Running simulation for {self.car.team} on {len(self.car.pit_laps)} stop strategy based on {self.generations} generations"
+        )
 
         # Create a progress object to allow us to print on a separate thread
         progress = Progress(0, self.generations)
@@ -195,7 +188,8 @@ class StrategyDeap:
                 # their fitness
                 for individual in offspring:
                     if not individual.fitness.valid:
-                        individual.fitness.values = toolbox.evaluate(individual)
+                        individual.fitness.values = toolbox.evaluate(
+                            individual)
 
                 # replace the population with the offspring
                 population[:] = offspring
@@ -210,8 +204,8 @@ class StrategyDeap:
                         strongest_ind = ind
                 length = len(population)
                 mean = sum(fits) / length
-                sum2 = sum(x*x for x in fits)
-                std = abs(sum2 / length - mean ** 2)**0.5
+                sum2 = sum(x * x for x in fits)
+                std = abs(sum2 / length - mean**2)**0.5
                 progress.additionalData(
                     f"Generation: {generation}",
                     f"Min: {min(fits)}",
@@ -224,6 +218,5 @@ class StrategyDeap:
             f"Team: {strongest_ind.team}, ",
             f"Pit Laps: {strongest_ind.pit_laps},",
             f"Pit Tyres: {', '.join([tyre.type for tyre in strongest_ind.pit_tyres])},",
-            f"Racetime: {strongest_ind.fitness.values[0]}"
-        )
+            f"Racetime: {strongest_ind.fitness.values[0]}")
         return strongest_ind

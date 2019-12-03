@@ -14,7 +14,6 @@ class Grapher:
         Args:
             plt (matplotlib.plot): The global plotter object
     '''
-
     def __init__(self, plt):
         self.plt = plt
 
@@ -27,7 +26,7 @@ class Grapher:
                 columns (int): The amount of graphs in columns
                 rows (int): The amount of graphs in rows
         '''
-        fig, plts = self.plt.subplots(rows, columns, figsize=(10,10))
+        fig, plts = self.plt.subplots(rows, columns, figsize=(10, 10))
         fig.canvas.set_window_title(title)
         fig.tight_layout(pad=5.0, w_pad=5.0, h_pad=10.0)
         return plts
@@ -69,18 +68,14 @@ class Grapher:
             for tyre in tyres:
                 tyre_data[tyre.type].addData(
                     tyre.grip,
-                    tyre.calculateLapTime(
-                        track.initial_fuel,
-                        current_fuel,
-                        track.lap_time,
-                        1.0
-                    )
-                )
+                    tyre.calculateLapTime(track.initial_fuel, current_fuel,
+                                          track.lap_time, 1.0))
                 tyre.addLap(track.initial_fuel, current_fuel, 1.0)
             current_fuel -= track.fuel_consumption_per_lap
 
         # Plot the results for each tyre
-        (grip_plt, lap_time_plt) = self.createPlots("Testing the simulation", 2, 1)
+        (grip_plt, lap_time_plt) = self.createPlots("Testing the simulation",
+                                                    2, 1)
         grip_plt.set_title('Degredation of all three compounds grip')
         grip_plt.set(xlabel="lap", ylabel="grip")
         lap_time_plt.set_title('Degredation of all three compounds lap time')
@@ -90,7 +85,6 @@ class Grapher:
             lap_time_plt.plot(data.lap_times, label=type)
         grip_plt.legend()
         lap_time_plt.legend()
-
 
     def graphStrategy(self, title, *cars):
         '''
@@ -110,7 +104,10 @@ class Grapher:
         for r in range(rows):
             for c in range(columns):
                 try:
-                    self.singlePlotGraph(plts[c, r] if rows > 1 else plts[c] if columns > 1 else plts, next(cars))
+                    self.singlePlotGraph(
+                        plts[c, r]
+                        if rows > 1 else plts[c] if columns > 1 else plts,
+                        next(cars))
                 except StopIteration:
                     break
 
@@ -123,7 +120,6 @@ class Grapher:
                 cars  (iter): An iterable of cars
         '''
         self.multiPlotGraph(self.createPlots(title, 1, 1), *cars)
-
 
     def multiPlotGraph(self, plt, *cars):
         '''
@@ -147,25 +143,25 @@ class Grapher:
         plt.legend()
 
     def singlePlotGraph(self, plt, car):
-            '''
+        '''
                 Given a plot and a car, plot the strategy
 
                 Args:
                     plt (subplot):  A sub plot to plot the data against
                     car (Car):      The car to simulate
             '''
-            racetime = {
-                car.team: {
-                    "pit_laps": car.pit_laps,
-                    "time": car.simulateRace()
-                }
+        racetime = {
+            car.team: {
+                "pit_laps": car.pit_laps,
+                "time": car.simulateRace()
             }
-            plt.plot(car.lap_times, color=car.colour, label=car.team)
-            xlabel, ylabel = self.strategyAxesLabels(car)
-            plt.set_xlabel(xlabel, horizontalalignment="left", x=0)
-            plt.set_ylabel(ylabel, horizontalalignment="left", y=0)
-            plt.set_title(self.strategyTitle(len(car.pit_laps), racetime))
-            plt.legend()
+        }
+        plt.plot(car.lap_times, color=car.colour, label=car.team)
+        xlabel, ylabel = self.strategyAxesLabels(car)
+        plt.set_xlabel(xlabel, horizontalalignment="left", x=0)
+        plt.set_ylabel(ylabel, horizontalalignment="left", y=0)
+        plt.set_title(self.strategyTitle(len(car.pit_laps), racetime))
+        plt.legend()
 
     def strategyTitle(self, stops, racetimes):
         '''
@@ -179,15 +175,12 @@ class Grapher:
                 str
         '''
 
-        return (
-            f"{stops} stop Strategy\n"
-            + "\n".join([
-                team.capitalize()
-                + f" Race Time: {self.convertFloatToTimedelta(data['time'])}"
-                + f" pitting on laps {','.join([str(lap) for lap in data['pit_laps']])}"
-                for team, data in racetimes.items()
-            ])
-        )
+        return (f"{stops} stop Strategy\n" + "\n".join([
+            team.capitalize() +
+            f" Race Time: {self.convertFloatToTimedelta(data['time'])}" +
+            f" pitting on laps {','.join([str(lap) for lap in data['pit_laps']])}"
+            for team, data in racetimes.items()
+        ]))
 
     def strategyAxesLabels(self, car):
         '''
@@ -200,14 +193,12 @@ class Grapher:
                 tuple(str)
         '''
         return (
-            "Lap Number \n"
-            + f"Start: {car.initial_tyre.type.capitalize()} compound\n"
-            + '\n'.join([
+            "Lap Number \n" +
+            f"Start: {car.initial_tyre.type.capitalize()} compound\n" +
+            '\n'.join([
                 f'Lap {car.pit_laps[i]} pit for {tyre.type.capitalize()} compound'
                 for i, tyre in enumerate(car.pit_tyres)
-            ]),
-            "Lap Times"
-        )
+            ]), "Lap Times")
 
     def convertFloatToTimedelta(self, value):
         '''

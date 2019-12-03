@@ -5,6 +5,7 @@
         Matthew Barber
 '''
 
+
 class Track:
     '''
         A track is populated with specific attributes
@@ -18,15 +19,8 @@ class Track:
             initial_fuel                (float):    The initial fuel for the track
             fuel_consumption_per_lap    (float):    Fuel usage per lap
     '''
-    def __init__(
-        self,
-        track_name,
-        race_laps,
-        lap_time,
-        pit_duration,
-        initial_fuel,
-        fuel_consumption_per_lap
-    ):
+    def __init__(self, track_name, race_laps, lap_time, pit_duration,
+                 initial_fuel, fuel_consumption_per_lap):
         self.track_name = track_name
         self.race_laps = race_laps
         self.lap_time = lap_time
@@ -42,14 +36,7 @@ class Track:
             Returns:
                 Track
         '''
-        return Track(
-            "Sample",
-            60,
-            90,
-            24,
-            105,
-            1.72
-        )
+        return Track("Sample", 60, 90, 24, 105, 1.72)
 
     def monaco():
         '''
@@ -58,11 +45,4 @@ class Track:
             Returns:
                 Track
         '''
-        return Track(
-            "Monaco",
-            78,
-            78,
-            24,
-            105,
-            1.72
-        )
+        return Track("Monaco", 78, 78, 24, 105, 1.72)
