@@ -1,3 +1,10 @@
+'''
+    Simulated Annealing
+
+    Author:
+        Matthew Barber <mfmbarber@gmail.com>
+'''
+
 import time
 from simanneal import Annealer
 

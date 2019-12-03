@@ -44,16 +44,17 @@ class Loader:
         '''
         while self.isBusy: # Will execute until interrupted
             progress = self.progress if self.progress else ''
-            sys.stdout.write(f"{next(self.loadingGenerator)} {progress}")
-            sys.stdout.flush()
+            print(f"{next(self.loadingGenerator)} {progress}")
             self.clearLine()
+
 
     def clearLine(self):
         '''
             Remove the last print, and reset the cursor
         '''
         time.sleep(self.delay)
-        sys.stdout.write('\033[2K\033[1G')
+        sys.stdout.write("\033[F") #back to previous line
+        sys.stdout.write("\033[K") #clear line
         sys.stdout.flush()
 
     def __enter__(self):

@@ -1,5 +1,10 @@
+'''
+    Genetic Evolution
+
+    Author:
+        Matthew Barber <mfmbarber@gmail.com>
+'''
 import random
-# from app.simulation.car import Car
 from app.render import Loader, Progress
 from deap import base, creator, tools
 
@@ -7,8 +12,11 @@ class StrategyDeap:
     '''
         Used for Analysing cars with a Genetic Algoritm
 
-    Args:
-
+        Args:
+            car                (Car):   The initial car to base our calculations on
+            with_initial_tyre (bool):   Option to include the initial tyre in the calculations
+            generations        (int):   The generations to test against
+            population         (int):   The population to use for evolution
     '''
     # constants that define the likely hood of two individuals having crossover
     # performed and the probability that a child will be mutated
@@ -37,6 +45,15 @@ class StrategyDeap:
         return individual.simulateRace(),
 
     def init(self, class_name):
+        '''
+            Returns an individual in our population
+
+            Args:
+                class_name  (str): The name of the class of individual
+
+            Returns:
+                class_name
+        '''
         car = class_name(
             self.car.track,
             self.car.initial_tyre,
@@ -52,6 +69,16 @@ class StrategyDeap:
 
     @staticmethod
     def crossover(ind1, ind2):
+        '''
+            Crossover the two individuals and return new individuals
+
+            Args:
+                ind1 (Car): Parent 1
+                ind2 (Car): Parent 2
+
+            Returns:
+                Tuple
+        '''
         child1 = ind1.__class__(ind1.track, ind1.initial_tyre, [], [])
         child2 = ind2.__class__(ind2.track, ind2.initial_tyre, [], [])
         child1.pit_laps = ind1.pit_laps
@@ -62,8 +89,15 @@ class StrategyDeap:
 
     @staticmethod
     def mutate(ind, indpb):
+        '''
+            Decide whether to mutate an individual
+
+            Args:
+                ind     (Car):      The individual
+                indpb   (float):    Probability of mutation
+        '''
         if random.random() < indpb:
-            ind.move() # TODO : Is this a small mutation?
+            ind.move()
 
     def getReferenceStrings(self):
         '''
@@ -126,9 +160,11 @@ class StrategyDeap:
 
         fits = [ind.fitness.values[0] for ind in population]
 
-
         print(f"Running simulation for {self.car.team} on {len(self.car.pit_laps)} stop strategy based on {self.generations} generations")
+
+        # Create a progress object to allow us to print on a separate thread
         progress = Progress(0, self.generations)
+        # Use a custom loader and run this code in the context of this
         with Loader(0.2, progress):
             for generation in range(self.generations):
                 progress.update(generation)

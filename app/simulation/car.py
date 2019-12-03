@@ -50,6 +50,12 @@ class Car:
         self.colour = colour
 
     def __copy__(self):
+        '''
+            Create a copy of the object
+
+            Returns:
+                Car
+        '''
         obj = type(self).__new__(self.__class__)
         obj.__dict__.update(self.__dict__)
         return obj
@@ -57,6 +63,9 @@ class Car:
     def isValidStrategy(self):
         '''
             Determines if this is a valid race strategy
+
+            Returns:
+                bool
         '''
         # First let's check compounds
         compounds = self.pit_tyres + [self.initial_tyre]
@@ -175,8 +184,9 @@ class Car:
         '''
         pit_lap_index = random.randint(0, len(self.pit_laps) - 1)
         pit_lap = -1
-        while pit_lap not in range(1, self.track.race_laps) or pit_lap == self.pit_laps[pit_lap_index]:
-            pit_lap = self.pit_laps[pit_lap_index] + random.randint(0, variance)
+        laps = range(self.track.race_laps)
+        while pit_lap not in laps:
+            pit_lap = self.pit_laps[pit_lap_index] + (1 if random.randint(0, variance) == 0 else -1)
         self.pit_laps[pit_lap_index] = pit_lap
 
     def move(self, withInitialTyre = False, variance = 1):
@@ -192,8 +202,6 @@ class Car:
             self.changeLap(variance)
         else:
             self.changeStartCompound()
-
-
 
     def __str__(self):
         return f"Car{self.team}, {self.intitial_tyre}"
